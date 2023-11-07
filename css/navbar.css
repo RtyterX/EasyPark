@@ -1,11 +1,18 @@
 
+.container{
+    display: flex;
+    
+ }
+
 .navbar{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(41, 131, 204);
     height: 80px;
-    border-bottom: solid white 5px;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(41, 131, 204, 0.637);
+
 }
 
 .logo{
@@ -60,11 +67,25 @@ textarea{
     border-radius: 20px;
 }
 
+.user_btn{
+    text-decoration: none;
+    color: rgb(240, 240, 240);
+    margin-top: 3px;
+    border-radius: 20px;
+    
+}
+
 .search_btn{
     text-decoration: none;
     color: rgb(240, 240, 240);
     margin-top: 3px;
     border-radius: 20px;
+    
+}
+
+.user_btn:hover{
+    transition: 0.2s;
+    transform: scale(1.18);
     
 }
 

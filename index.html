@@ -12,11 +12,14 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+    <!---Icone User--->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <!---Arhivo Black 400--->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
 
     <!---Abel 400--->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,19 +27,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Archivo+Black&display=swap" rel="stylesheet">
 
 </head>
-
 <header>
     <!---================================================== Barra de navegação =================================================================================--->
-    <div class="containerX">
+    <div class="container">
         <div class="navbar">
             <nav>
                 <div class="botoes">
-                    <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
-                    <a href="loginParceiro.html" class="btn_nav">Seja um parceiro</a>
+                    <div><a href="#" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
+                    <a href="#" class="btn_nav">Seja um parceiro</a>
                     <a href="#" class="btn_nav">Contato</a>
                     <a href="#" class="btn_nav">Sobre nós</a>
-                    <a href="chose.html" class="btn_nav">Reserva</a>
+                    <a href="#" class="btn_nav">Reserva</a>
                     <form class="pesquisa">
+                        <a href="#" class="user_btn"><span class="material-symbols-outlined">account_circle</span></a>
                         <div>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
                         </div>
@@ -47,7 +50,6 @@
         </div>
     </div>
 </header>
-
 
 <body>
 
@@ -90,24 +92,85 @@
         }
     </script>
 
-    <!---================================================== Grid =================================================================================--->
+    <!---================================================== Grid - Vantagens =================================================================================--->
+
+    <div class="vantagens-title">
+        <div>
+            <h1><span class="teste">Vantagens</span></h1>
+        </div>
+    </div>
+    <div class="vantagens-container">
+        <div class="vantagens-img">
+            <div class="vantagem01">
+                <img src="img/vantagem01.png" alt="Ícone de cadeado">
+                <p>Medidas de <strong>segurança altamente confiáveis</strong> para garantir a proteção do seu veículo.
+                </p>
+            </div>
+
+            <div class="vantagem02">
+                <img src="img/vantagem02.png" alt="Ícone de veículos">
+                <p>Oferecemos espaços disponíveis para <strong>veículos de todos os tipos</strong> em nossos
+                    estacionamentos.</p>
+            </div>
+
+            <div class="vantagem03">
+                <img src="img/vantagem03.png" alt="Ícone de localização">
+                <p>Locais de estacionamento <strong>localizados</strong> nos pontos mais movimentados da cidade.</p>
+            </div>
+
+            <div class="vantagem04">
+                <img src="img/vantagem04.png" alt="Ícone de relógio">
+                <p>Áreas de estacionamento com <strong>horários</strong> que se ajustam às <strong>suas
+                        necessidades.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!---================================================== Grid - Informações =================================================================================--->
+
 
     <div class="infos-container">
         <div class="infos-texto">
-            <p>A EasyPark® é a sua melhor escolha para administração e gestão de estacionamentos. 
+            <p>EasyPark® é a sua melhor escolha para administração e gestão de estacionamentos.
                 Possuímos alto padrão
                 no atendimento a clientes de todo o Brasil. <br>
-                Temos a premissa em atender bem suas necessidades de mobilidade urbana da maneira mais fácil possível. <br>
-                <button href="#" class="saiba-mais">
+                Temos a premissa em atender bem suas necessidades demobilidade urbana da maneira mais fácil possível.
+                <br>
+                <button href="#" class="btn-saibamais">
                     Saiba mais
                 </button>
             </p>
         </div>
 
         <div class="infos-img">
-            <img src="/img/04.jpg" alt="Carro estacionado">
+            <img src="/img/07.jpg" alt="Carro estacionado">
+        </div>
+    </div>
+
+    <!---================================================== Direitos reservados =================================================================================--->
+
+    <div class="direitos-container">
+        <div class="logofull-img">
+            <img src="/img/logo_ep_full.png" alt="">
+            
+            <div class="direitos-text">
+                <h2>
+                    Alguns direitos reservados a EasyPark®
+                </h2>
+            </div>
         </div>
 
+        <div class="contato">
+            <h2>Contatos</h2>
+            <div class="infos-contatos">
+                <p>(19) 2470-0122</p>
+                <p>easypark@contato.com.br</p>
+                <img src="/img/socialmedia.png" alt="">
+            </div>
+        </div>
     </div>
+
+
+
 
 </body>

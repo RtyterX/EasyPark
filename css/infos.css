@@ -1,23 +1,48 @@
 .infos-container{
-    padding: 0px 0px 0px 300px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: rgb(53, 158, 243); 
 }
 
 .infos-texto{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
-    font-family: 'Archivo Black', sans-serif;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    font-family: 'Abel', sans-serif;
+    padding: 0px 80px 0px 100px;
+
 }
 
 .infos-img{
     display: flex;
+    width: 100%;
     justify-content: start;
-    padding: 20px;
 }
 
 .saiba-mais{
     gap: 40px;
+}
+
+.btn-saibamais{
+    margin-top: 10px;
+    width: 150px;
+    height: 30px;
+    border: solid 1px rgb(0, 83, 208);
+    border-radius: 20px;
+    color: rgb(0, 83, 208);
+    font-family: 'Abel', sans-serif;
+    font-size: 20px;
+    background-color: rgb(0, 83, 208);
+    color: white;
+
+}
+.btn-saibamais:hover{
+    background-color: rgb(238, 238, 238);
+    transition: 0.5s;
+    color: rgb(0, 83, 208);
+    background-color: 0.5s ease, color 0.5s ease, transform 0.5s ease;
+
+    transform: scale(1.1)
 }
