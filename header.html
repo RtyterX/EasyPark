@@ -49,65 +49,6 @@
 </header>
 
 
-<body>
+</html>
 
-    <!---================================================== Slider =================================================================================--->
-    <div class="slider-container">
-        <div class="slide-img fade">
-            <img src="img/01.jpg" style="width:auto">
-        </div>
 
-        <div class="slide-img fade">
-            <img src="img/02.jpg" style="width:auto">
-        </div>
-
-        <div class="slide-img fade">
-            <img src="img/03.jpg" style="width:auto">
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-
-    <script src="script.js"></script>
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("slide-img");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-        }
-    </script>
-
-    <!---================================================== Grid =================================================================================--->
-
-    <div class="infos-container">
-        <div class="infos-texto">
-            <p>A EasyPark® é a sua melhor escolha para administração e gestão de estacionamentos. 
-                Possuímos alto padrão
-                no atendimento a clientes de todo o Brasil. <br>
-                Temos a premissa em atender bem suas necessidades de mobilidade urbana da maneira mais fácil possível. <br>
-                <button href="#" class="saiba-mais">
-                    Saiba mais
-                </button>
-            </p>
-        </div>
-
-        <div class="infos-img">
-            <img src="/img/04.jpg" alt="Carro estacionado">
-        </div>
-
-    </div>
-
-</body>
