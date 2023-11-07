@@ -1,0 +1,23 @@
+.infos-container{
+    padding: 0px 0px 0px 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.infos-texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.infos-img{
+    display: flex;
+    justify-content: start;
+    padding: 20px;
+}
+
+.saiba-mais{
+    gap: 40px;
+}
