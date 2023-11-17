@@ -34,7 +34,6 @@
 
 <body>
 
-
     <header>
         <!---================================================== Barra de navegação =================================================================================--->
         <div class="containerX">
@@ -43,7 +42,7 @@
                     <div class="botoes">
                         <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a>
                         </div>
-                        <a href="loginParceiro.html" class="btn_nav">Seja um parceiro</a>
+                        <a href="loginCliente.html" class="btn_nav">Login / Crie sua Conta</a>
                         <a href="#" class="btn_nav">Contato</a>
                         <a href="#" class="btn_nav">Sobre nós</a>
                         <a href="chose.html" class="btn_nav">Reserva</a>
@@ -59,7 +58,6 @@
         </div>
     </header>
 
-
     <script>
 
         // --------  Variaveis  -------- 
@@ -69,6 +67,8 @@
         var horas = 1;
         var valor = 2;
         var pagamento = 0;
+
+        const obj = { name: "João", age: "31" };
 
 
         // --------  Mostra Variavel no HTML  -------- 
@@ -97,7 +97,6 @@
             pagamento = horas * valor;
 
         }
-
 
 
         // --------  Troca Imagem  -------- 
@@ -205,6 +204,8 @@
         function confirmaCompra() {
 
             // Manda pro banco de dados
+
+            const myJSON = JSON.stringify(obj);
 
         }
 
