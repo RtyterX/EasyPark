@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-l,.br">
 
 <head>
+
+    <title>Easy Park - Home</title>
+
+    <!-- Meta tags Obrigatórias -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Easy Park - Home</title>
     <link rel="shortcut icon" href="/img/logo_ep_icon (1).ico">
 
     <!---Icone Search--->
@@ -27,17 +30,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Archivo+Black&display=swap" rel="stylesheet">
 
 </head>
+
 <header>
+
     <!---================================================== Barra de navegação =================================================================================--->
+
     <div class="container">
         <div class="navbar">
             <nav>
                 <div class="botoes">
-                    <div><a href="#" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
+                    <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
                     <a href="loginCliente.html" class="btn_nav">Login / Crie sua Conta</a>
-                    <a href="#" class="btn_nav">Contato</a>
-                    <a href="#" class="btn_nav">Sobre nós</a>
-                    <a href="#" class="btn_nav">Reserva</a>
+                    <a href="index.html#contato" class="btn_nav">Contato</a>
+                    <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
+                    <a href="chose.html" class="btn_nav">Reserva</a>
                     <form class="pesquisa">
                         <a href="#" class="user_btn"><span class="material-symbols-outlined">account_circle</span></a>
                         <div>
@@ -129,7 +135,7 @@
     <!---================================================== Grid - Informações =================================================================================--->
 
 
-    <div class="infos-container">
+    <div id="sobrenos" class="infos-container">
         <div class="infos-texto">
             <p>EasyPark® é a sua melhor escolha para administração e gestão de estacionamentos.
                 Possuímos alto padrão
@@ -160,7 +166,7 @@
             </div>
         </div>
 
-        <div class="contato">
+        <div class="contato" id="contato">
             <h2>Contatos</h2>
             <div class="infos-contatos">
                 <p>(19) 2470-0122</p>
