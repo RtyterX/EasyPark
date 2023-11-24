@@ -34,7 +34,7 @@
 <header>
 
     <!---================================================== Barra de navegação =================================================================================--->
-   
+
     <div class="containerX">
         <div class="navbar">
             <nav>
@@ -63,7 +63,7 @@
         <div class="background">
 
 
-             <!---================================================== Pop - Cadastro =================================================================================--->
+            <!---================================================== Pop - Cadastro =================================================================================--->
 
             <div class="popup1">
 
@@ -92,7 +92,8 @@
                                 <input type="text" id="email" placeholder="Coloque seu E-mail" name="email" required>
 
                                 <label for="psw"><b>Senha</b></label>
-                                <input type="password" id="password" placeholder="Coloque sua Senha" name="psw" required>
+                                <input type="password" id="password" placeholder="Coloque sua Senha" name="psw"
+                                    required>
 
                                 <label for="phone"><b>Telefone</b></label>
                                 <input type="text" id="phone" placeholder="Coloque seu Genero" name="phone" required>
@@ -101,7 +102,8 @@
                             </div>
 
                             <div class="container" style="background-color:#f1f1f1">
-                                <a href="/loginCliente.html"><button type="button" class="cancelbtn">Faça Login</button></a>
+                                <a href="/loginCliente.html"><button type="button" class="cancelbtn">Faça
+                                        Login</button></a>
                             </div>
                         </form>
 
@@ -133,16 +135,18 @@
 
         function criaConta() {
 
-            var name = document.getElementById("name").value;
-            var cpf = document.getElementById("cpf").value;
-            var age = document.getElementById("age").value;
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
-            var phone = document.getElementById("phone").value;
+            fetch("https.localhost:8080/cliente/insert");
 
-            const obj = { name, cpf, age, login, password, phone };
+                var name = document.getElementById("name").value;
+                var cpf = document.getElementById("cpf").value;
+                var age = document.getElementById("age").value;
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var phone = document.getElementById("phone").value;
 
-            const myJSON = JSON.stringify(obj);
+                const obj = { name, email, password, cpf, age, phone };
+
+                const myJSON = JSON.stringify(obj);
 
         }
 
