@@ -1,0 +1,71 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: visible;
+    background-image: url("/img/background.webp");
+    background-size: cover;
+   
+}
+
+
+.background {
+    display: flex;
+    justify-content: center; 
+
+    
+    height: 100%;
+}
+
+.popup1 {
+    padding: 100px;
+}
+
+.popup2 {
+    width: 50%;
+    height: 50%;
+    margin-top: 50px;
+    max-width: 100%;
+    justify-content: center;
+    background-color:aliceblue;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 80px;
+    border-radius: 20px;
+
+}
+
+.teste {
+
+width: 1200px;
+padding: 10px;
+
+}
+
+
+.conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo2 {
+    display: flex;
+    justify-content: center;
+}
+
+.escolheVaga {
+
+    padding: 100px;
+}
+
+.vagas {
+
+    max-width: min-content;
+}
+
+.icon {
+padding: 50p;
+}
+
