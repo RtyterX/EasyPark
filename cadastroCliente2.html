@@ -35,17 +35,17 @@
 
     <!---================================================== Barra de navegação =================================================================================--->
 
-    <div class="container-cadastropage">
+    <div class="containerX">
         <div class="navbar">
             <nav>
                 <div class="botoes">
                     <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
+                    <a href="loginCliente.html" class="btn_nav">Login / Crie sua Conta</a>
                     <a href="index.html#contato" class="btn_nav">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="choose.html" class="btn_nav">Reserva</a>
+                    <a href="chose.html" class="btn_nav">Reserva</a>
                     <form class="pesquisa">
-                        <a href="loginCliente.html" class="user_btn"><span
-                                class="material-symbols-outlined">account_circle</span></a>
+                        <a href="#" class="user_btn"><span class="material-symbols-outlined">account_circle</span></a>
                         <div>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
                         </div>
@@ -65,47 +65,59 @@
 
             <!---================================================== Pop - Cadastro =================================================================================--->
 
-            <div class="container-cadastro">
-                <form action="." method="post">
+            <div class="popup1">
 
-                    <div class="cadastro-title">
-                        <h1>Crie sua Conta!</h1>
+                <div class="popup2">
+
+                    <div class="containerY">
+
+
+                        <form action="." method="post">
+
+                            <div class="imgcontainer">
+                                <h1>Crie sua Conta!</h1>
+                            </div>
+
+                            <div class="container">
+                                <label for="name"><b>Nome</b></label>
+                                <input type="text" id="name" placeholder="Coloque seu Nome" name="name" required>
+
+                                <label for="cpf"><b>CPF</b></label>
+                                <input type="text" id="cpf" placeholder="Coloque seu CPF" name="cpf" required>
+
+                                <label for="age"><b>Idade</b></label>
+                                <input type="text" id="idade" placeholder="Coloque sua Idade" name="idade" required>
+
+                                <label for="email"><b>E-mail</b></label>
+                                <input type="text" id="email" placeholder="Coloque seu E-mail" name="email" required>
+
+                                <label for="psw"><b>Senha</b></label>
+                                <input type="password" id="senha" placeholder="Coloque sua Senha" name="psw"
+                                    required>
+
+                                <label for="phone"><b>Telefone</b></label>
+                                <input type="text" id="phone" placeholder="Coloque seu Genero" name="phone" required>
+
+                                <button type="submit" id="cadastro" onclick="criaConta()">Criar conta</button>
+                            </div>
+
+                            <div class="container" style="background-color:#f1f1f1">
+                                <a href="/loginCliente.html"><button type="button" class="cancelbtn">Faça
+                                        Login</button></a>
+                            </div>
+                        </form>
+
+
+                        
+
+
                     </div>
-                    <div class="cadastro-infos">
-                        <input class="input-cadastro" type="text" id="name" placeholder="Nome" name="name" required>
 
-                        <input class="input-cadastro" type="text" id="cpf" placeholder="CPF" name="cpf" required>
+                </div>
 
-                        <input class="input-cadastro" type="text" id="age" placeholder="Idade" name="age" required>
-
-                        <input class="input-cadastro" type="text" id="email" placeholder="E-mail" name="email" required>
-
-                        <input class="input-cadastro" type="password" id="password" placeholder="Senha" name="psw"
-                            required>
-
-                        <input class="input-cadastro" type="text" id="phone" placeholder="Telefone" name="phone"
-                            required>
-
-                        <button class="cadlog-btn" type="submit" onclick="criaConta()">Criar conta</button>
-                    </div>
-
-                    <div class="login-btn">
-                        <a class="cadlog-btn" href="/loginCliente.html"><button type="button" class="cancelbtn">Faça
-                                Login</button></a>
-                    </div>
-                </form>
             </div>
 
-            <h1>Nome: <span id="nome">0</span></h1>
-            <h1>email: <span id="email1">0</span></h1>
-            <h1>senha: <span id="senha1">0</span></h1>
-            <h1>Nome: <span id="cpf1">0</span></h1>
-            <h1>email: <span id="idade1">0</span></h1>
-            <h1>senha: <span id="phone1">0</span></h1>
-            <h1>senha: <span id="JSON">0</span></h1>
-            <button type="submit" id="cadastro" onclick="mostraVariaveis()">Teste</button>
         </div>
-
     </section>
 
 
@@ -119,22 +131,16 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+
     <script>
 
         var username;
 
-        var StringJSON;
 
-        var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var senha = document.getElementById("senha").value;
-            var cpf = document.getElementById("cpf").value;
-            var idade = document.getElementById("idade").value;
-            var phone = document.getElementById("phone").value;
 
-        function criaConta() {
 
-            fetch("https.localhost:8080/cliente/insert");
+
+        async function criaConta() {
 
             var name = document.getElementById("name").value;
             var email = document.getElementById("email").value;
@@ -143,34 +149,39 @@
             var idade = document.getElementById("idade").value;
             var phone = document.getElementById("phone").value;
 
-            const obj = { name: name, email: email, password: password, cpf: cpf, idade: idade, phone: phone };
+            const obj = { name:name, email:email,senha:senha,cpf:cpf,idade:idade,phone:phone };
 
-            const myJSON = JSON.stringify(obj);
+            const response = await fetch ("localhost:8080/cliente/insert", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+
+                body: JSON.stringify(obj),
+            });
 
         }
+
 
 
 
         function mostraVariaveis() {
 
-
+            var name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const cpf = document.getElementById("cpf").value;
+            const idade = document.getElementById("idade").value;
+            const phone = document.getElementById("phone").value;
 
             document.getElementById("nome").innerHTML = name;
             document.getElementById("email1").innerHTML = email;
             document.getElementById("senha1").innerHTML = senha;
-            document.getElementById("cpf1").innerHTML = cpf;
-            document.getElementById("idade1").innerHTML = idade;
-            document.getElementById("phone1").innerHTML = phone;
-
-            document.getElementById("JSON").innerHTML = StringJSON;
-
-            const obj = { name: name, email: email, password: password, cpf: cpf, idade: idade, phone: phone };
-
-            const myJSON = JSON.stringify(obj);
-
-            //return StringJSON = myJSON;
 
         }
+
+
+
 
 
         function verificaLogin(username) {
