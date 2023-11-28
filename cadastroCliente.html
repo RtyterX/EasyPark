@@ -66,7 +66,7 @@
             <!---================================================== Pop - Cadastro =================================================================================--->
 
             <div class="container-cadastro">
-                <form action=".">
+                <form action="">
 
                     <div class="cadastro-title">
                         <h1>Crie sua Conta!</h1>
@@ -123,7 +123,7 @@
         
         var StringJSON;
 
-        var name = document.getElementById("name").value;
+            var name = document.getElementById("name").value;
             var email = document.getElementById("email").value;
             var senha = document.getElementById("senha").value;
             var cpf = document.getElementById("cpf").value;
@@ -141,32 +141,9 @@
             var idade = document.getElementById("idade").value;
             var phone = document.getElementById("phone").value;
 
-            const obj = { name: name, email: email, password: password, cpf: cpf, idade: idade, phone: phone };
+            const obj = { name: name, email: email, senha: senha, cpf: cpf, idade: idade, phone: phone };
 
             const myJSON = JSON.stringify(obj);
-
-        }
-
-
-
-        function mostraVariaveis() {
-
-
-
-            document.getElementById("nome").innerHTML = name;
-            document.getElementById("email1").innerHTML = email;
-            document.getElementById("senha1").innerHTML = senha;
-            document.getElementById("cpf1").innerHTML = cpf;
-            document.getElementById("idade1").innerHTML = idade;
-            document.getElementById("phone1").innerHTML = phone;
-
-            document.getElementById("JSON").innerHTML = StringJSON;
-
-            const obj = { name: name, email: email, password: password, cpf: cpf, idade: idade, phone: phone };
-
-            const myJSON = JSON.stringify(obj);
-
-            //return StringJSON = myJSON;
 
         }
 
