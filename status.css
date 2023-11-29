@@ -1,0 +1,43 @@
+.container-status {
+    margin-top: 20px;
+    
+    display: flex;
+    max-width: 1000px;
+    justify-content:center;
+    align-items: center;
+    padding:  50px 100px 50px 100px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.status-title {
+    display: flex;
+    font-size: 30px;
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+    background-color: rgb(53, 158, 243);
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.status-info {
+    margin-top: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-status {
+    width: 350px;
+    height: 50px;
+    padding: 0 5px 0 10px;
+    border-radius: 5px;
+    border: 1px solid #dddfe2;
+}
+
+.cadlog-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
