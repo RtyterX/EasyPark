@@ -29,7 +29,9 @@ public class Cliente {
 	public Long phone;
 	
 	
+	public Cliente() {
 	
+	}
 	
 	public Cliente(Long id, String name, String email, String senha, String cpf, int idade, Long phone) {
 		super();
