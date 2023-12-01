@@ -76,16 +76,18 @@
 
                         <form id="cadlog-btn">
 
+                            <h1 id="demo">TESTE</h1>
+
                             <div class="imgcontainer">
                                 <h1>Faça seu Login!</h1>
                             </div>
 
                             <div class="container-Popup">
-                                <label for="uname"><b>E-mail</b></label>
-                                <input type="text" id="email" placeholder="E-mail" name="email" required>
+                                <label for="email"><b>E-mail</b></label>
+                                <input type="email" id="email" placeholder="E-mail" name="email" required>
 
                                 <label for="psw"><b>Senha</b></label>
-                                <input type="password" id="senha" placeholder="Senha" name="senha" required>
+                                <input type="senha" id="senha" placeholder="Senha" name="senha" required>
 
                                 <button type="submit">Login</button>
                                 <label>
@@ -127,62 +129,48 @@
    // Liga a função criaConta com o Botão de Cadastrar (submit)
    document.addEventListener('DOMContentLoaded', function () {
        const form = document.getElementById('cadlog-btn');
-       form.addEventListener('submit', criaConta);
+       form.addEventListener('submit', confirmaLogin);
    });
 
 
    // Envia dados para o Backend  -Metodo "Post"
-   async function criaConta(event) {
+   async function confirmaLogin(event) {
        event.preventDefault();
 
        // Variaveis
        const email = document.getElementById("email").value;
        const senha = document.getElementById("senha").value;
 
-       // String para JSON
-       const obj = {
-
-           email: email,
-           senha: senha,
-
-       };
-
        // Envia o JSON para a URL correta
-       const response = await fetch("http://localhost:8080/cliente/list", {
+       const response = await fetch("http://localhost:8080/cliente/list/" + email, {
            method: 'GET',
            headers: {
                'Content-Type': 'application/json',
            },
 
            // Envio do JSON
-           body: JSON.stringify(obj),
+           body: JSON.parse(response),
+
+           const obj = JSON.parse(response);
+           document.getElementById("demo").innerHTML = obj.email + ", " + obj.senha;
+
+
+           if (obj.senha == senha) {
+            
+               // Vai para a Pagina Inicial
+                window.location.href = "http://127.0.0.1:5500/index.html";
+ 
+                cookies.setItem (obj.name);
+
+           } else {
+
+               alert("Senha errada");
+           }
+
 
        });
 
-       if (response.ok) {
-
-           // Vai para a Pagina Inicial
-           window.location.href = "http://127.0.0.1:5500/index.html";
- 
-
-       } else {
-
-           alert("Erro ao Cadastrar");
-       }
-
-   }
-
-
-        function confirmaLogin() {
-
-            var login = document.getElementById("login").value;
-            var password = document.getElementById("password").value;
-
-            const obj = { login, password };
-
-            const myJSON = JSON.stringify(obj);
-
-        }
+    }
 
         function rememberLogin() {
 
