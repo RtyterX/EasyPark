@@ -61,7 +61,7 @@
     <section>
 
         <div class="background">
-            <div class="container">
+            <div class="container" id="personalInfo">
                 <label for="name"><b>Nome</b></label>
                 <input type="text" id="name" placeholder="Coloque seu Nome" name="name" required>
 
@@ -81,7 +81,8 @@
                 <label for="phone"><b>Telefone</b></label>
                 <input type="text" id="phone" placeholder="Coloque seu Genero" name="phone" required>
 
-                <button type="submit" onclick="criaConta()">Criar conta</button>
+                <button onclick="editaCadastro()">Editar</button>
+                <button onclick="deletaCadastro()">Deletar Conta</button>
             </div>
 
 
@@ -103,7 +104,85 @@
 
     <script>
 
-      
+
+        function editaCasdastro() {
+
+// Envia cadastro para o Backend  -Metodo "Post"
+        async function criaConta(event) {
+            event.preventDefault();
+
+            // Variaveis
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const cpf = document.getElementById("cpf").value;
+            const idade = document.getElementById("idade").value;
+            const phone = document.getElementById("phone").value;
+
+            // String para JSON
+            const obj = {
+
+                name: name,
+                email: email,
+                senha: senha,
+                cpf: cpf,
+                idade: idade,
+                phone: phone
+
+            };
+
+            // Envia o JSON para a URL correta
+            const response = await fetch("http://localhost:8080/cliente/insert", {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+
+                // Envio do JSON
+                body: JSON.stringify(obj),
+
+            });
+
+            if (response.ok) {
+
+                // Cadastro Feito com Sucesso
+                const cadastroSucesso = "<h1> Cadastro feito</h1> <h1> com Sucesso!</h1>";
+                document.getElementById("teste").innerHTML = cadastroSucesso;
+
+            } else {
+
+                alert("Erro ao Cadastrar");
+            }
+
+            
+        }
+
+        function deletaCadastro() {
+
+            // Pega o Valor do Campo email e transforma em Variavel
+           const email = document.getElementById("email").value;
+
+            //  Envia o Método Delete para o Banco
+           const response = await fetch("http://localhost:8080/cliente/delete/" + email, {
+           method: 'DEL',
+           headers: {
+               'Content-Type': 'application/json',
+           },
+
+           // Se der certo...
+           if (response.ok) {
+
+                // Cadastro Deletado com Sucesso
+               const deleted = "<h1>Cadastro deletado com Sucesso</h1>";
+               document.GetElementById("personalInfo").innerHTML = deleted;
+               
+            } else {
+
+                alert("Erro ao deletar Cadastro");
+            }
+
+        }
+
     </script>
 
 </body>
