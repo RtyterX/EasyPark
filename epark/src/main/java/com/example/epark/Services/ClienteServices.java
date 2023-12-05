@@ -32,4 +32,12 @@ public class ClienteServices {
 		return clienteRepository.findAll();
 	}
 	
+	public Cliente update(long id, Cliente cliente) {
+		if (clienteRepository.existsById(id)) {
+			cliente.setId(id);
+			return clienteRepository.save(cliente);
+		} else {
+			throw new IllegalArgumentException("Cliente " + id + " não existe" );
+		}
+	}
 }
