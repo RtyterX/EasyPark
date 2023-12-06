@@ -2,12 +2,14 @@ package com.example.epark.Entity;
 
 import java.util.Objects;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-
+@Component
 @Entity
 public class Cliente {
 
@@ -26,14 +28,14 @@ public class Cliente {
 	
 	public int idade;
 
-	public Long phone;
+	public String phone;
 	
 	
 	public Cliente() {
 	
 	}
 	
-	public Cliente(Long id, String name, String email, String senha, String cpf, int idade, Long phone) {
+	public Cliente(Long id, String name, String email, String senha, String cpf, int idade, String phone) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -222,7 +224,7 @@ public class Cliente {
 
 
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
@@ -236,7 +238,7 @@ public class Cliente {
 
 
 
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
