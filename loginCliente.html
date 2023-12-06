@@ -2,7 +2,7 @@
 <html lang="pt-l,.br">
 
 <head>
-    
+
     <title>Easy Park - Login Cliente</title>
 
     <!-- Meta tags Obrigatórias -->
@@ -34,7 +34,7 @@
 <header>
 
     <!---================================================== Barra de navegação =================================================================================--->
-    
+
     <div class="containerX">
         <div class="navbar">
             <nav>
@@ -86,7 +86,7 @@
                                 <label for="email"><b>E-mail</b></label>
                                 <input type="email" id="email" placeholder="E-mail" name="email" required>
 
-                                <label for="psw"><b>Senha</b></label>
+                                <label for="senha"><b>Senha</b></label>
                                 <input type="senha" id="senha" placeholder="Senha" name="senha" required>
 
                                 <button type="submit">Login</button>
@@ -97,7 +97,8 @@
 
                             <div class="container-Popup" style="background-color:#f1f1f1">
                                 <span class="psw">Esqueceu a senha? Clique <a href="#">aqui</a></span>
-                                <a href="/cadastroCliente.html"><button type="button" class="cancelbtn">Cadastre-se</button></a>
+                                <a href="/cadastroCliente.html"><button type="button"
+                                        class="cancelbtn">Cadastre-se</button></a>
                             </div>
                         </form>
 
@@ -112,65 +113,73 @@
     </section>
 
 
-   <!---================================================== Scripts =================================================================================--->
+    <!---================================================== Scripts =================================================================================--->
 
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-   crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-   integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-   crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-   integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
-<script>
+    <script>
 
-   // Liga a função criaConta com o Botão de Cadastrar (submit)
-   document.addEventListener('DOMContentLoaded', function () {
-       const form = document.getElementById('cadlog-btn');
-       form.addEventListener('submit', confirmaLogin);
-   });
+        // Liga a função criaConta com o Botão de Cadastrar (submit)
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('cadlog-btn');
+            form.addEventListener('submit', confirmaLogin);
+        });
 
 
-   // Envia dados para o Backend  -Metodo "Post"
-   async function confirmaLogin(event) {
-       event.preventDefault();
+        // Envia dados para o Backend  -Metodo "Post"
+        async function confirmaLogin(event) {
+            event.preventDefault();
 
-       // Variaveis
-       const email = document.getElementById("email").value;
-       const senha = document.getElementById("senha").value;
+            // Variaveis
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
 
-       // Envia o JSON para a URL correta
-       const response = await fetch("http://localhost:8080/cliente/list/" + email, {
-           method: 'GET',
-           headers: {
-               'Content-Type': 'application/json',
-           },
 
-           // Envio do JSON
-           body: JSON.parse(response),
+            // Envia o JSON para a URL correta
+            const response = await fetch("http://localhost:8080/cliente/list/" + email, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    
+                },
 
-           const obj = JSON.parse(response);
-           document.getElementById("demo").innerHTML = obj.email + ", " + obj.senha;
+                // Envio do JSON
+
+            });
+
+            const obj = JSON.parse(response);
+
+
+            document.getElementById("demo").innerHTML = obj.email + ", " + obj.senha;
 
 
            if (obj.senha == senha) {
+            //if (response.ok) {
+
+
+                alert("Deu certo");
             
-               // Vai para a Pagina Inicial
-                window.location.href = "http://127.0.0.1:5500/index.html";
+
+                // Vai para a Pagina Inicial
+              //  window.location.href = "http://127.0.0.1:5500/index.html";
+
+           //     cookies.setItem(obj.name);
+
+            } else {
+
+                alert("Senha errada");
+            }
  
-                cookies.setItem (obj.name);
-
-           } else {
-
-               alert("Senha errada");
-           }
-
-
-       });
-
-    }
+        }
+    
 
         function rememberLogin() {
 
