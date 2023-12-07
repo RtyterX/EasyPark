@@ -1,0 +1,106 @@
+     
+
+1 - 
+        function getUser(email) {
+           const userData = fetch("http://localhost:8080/cliente/list/{email}", { 
+               method: 'GET',
+               headers: {
+               'Content-Type': 'application/json',
+           })
+             .then(response => response.json())
+             .then(data => console.log(data.email))
+             .then(document.getElementById("demo").innerHTML = data.email + ", " + data.senha);
+
+          const obj = JSON.parse(response);
+        }
+
+                                    
+2 - 
+        function getUser(email) {
+           const userData = fetch("http://localhost:8080/cliente/list/{email}", { 
+               method: 'GET',
+               headers: {
+               'Content-Type': 'application/json',
+           })
+             .then(response => response.json())
+             .then(data => console.log(data.email));
+
+          document.getElementById("demo").innerHTML = data.email + ", " + data.senha;
+
+          const obj = JSON.parse(response);
+        }
+
+
+3 - 
+
+       var obj;
+  
+       function getUser(email) {
+           const userData = fetch("http://localhost:8080/cliente/list/{email}", { 
+               method: 'GET',
+               headers: {
+               'Content-Type': 'application/json',
+           })
+             .then(response => response.json())
+             .then(data => console.log(data.email));
+
+          obj = {
+
+                name: data.name,
+                email: data.email,
+                senha: data.senha,
+                cpf: data.cpf,
+                idade: data.idade,
+                phone: data.phone
+            
+            };
+
+        }
+
+            const testeJson = JSON.parse(obj);
+
+
+
+4 - 
+
+       var obj;
+
+      function testeBotao() {
+
+
+
+      }
+  
+       function getUser(email) {
+
+           var teste;
+         
+           const userData = fetch("http://localhost:8080/cliente/list/{email}", { 
+               method: 'GET',
+               headers: {
+               'Content-Type': 'application/json',
+           })
+             .then(response => response.json())
+             .then(data => console.log(data.email))
+             .then(teste = data.email);
+
+         return teste;
+
+        }
+
+--------------------------------------------------------------
+
+  function insideValue(value) {
+    
+    document.getElementById("demo").innerHTML = value;
+
+  }
+
+  
+  
+Ultima Opção - 
+
+    Guardar na memoria local
+    Windows.LocalStorage
+
+
