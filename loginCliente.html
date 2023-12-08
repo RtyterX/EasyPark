@@ -72,12 +72,14 @@
                 <div class="popup2">
 
                     <div class="containerY">
-
-
+                        
+                        // Formulário
                         <form id="cadlog-btn">
 
-                            <h1 id="demo">TESTE</h1>
-                            <h1 id="demo2">TESTE 2</h1>
+                            <h1 id="demo1">VARIAVEL 1</h1>
+                            <h1 id="demo2">VARIAVEL 2</h1>
+
+                            <div id="sucessoLogin">
 
                             <div class="imgcontainer">
                                 <h1>Faça seu Login!</h1>
@@ -101,12 +103,15 @@
                                 <a href="/cadastroCliente.html"><button type="button"
                                         class="cancelbtn">Cadastre-se</button></a>
                             </div>
+                            </div>
                         </form>
 
-
-                        <button id="teste1" onclick="teste1()">Teste</button>
-                        <button id="teste2" onclick="teste2()">Teste2</button>
-                        <button id="testeEmail" onclick="testeEmail()">TesteEmail</button>
+                        // Botões de Teste
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <button id="novoConfirmaLogin" onclick="confirmaLogin()">Confirma Login</button>
+                        <button id="botaoTeste" onclick="botaoTeste"()">Teste</button>
 
 
                     </div>
@@ -133,106 +138,100 @@
 
     <script>
 
-        // var email = document.getElementById("email").value;
+        // Confirma o Login
+        function confirmaLogin() {
 
-        var teste = "teste";
+            // Banco de Dados
+            var emailDB;
+            var senhaDB;
 
-        var emailTeste;
+            // Formulario de Login
+            const login = document.getElementById("email").value;
+            const password = document.getElementById("senha").value;
 
-        var senhaTeste;
+            getUserData(login);
 
-
-        function teste1() {
-
-            email = document.getElementById("email").value;
-
-            teste = getUserName(email);
-
-        }
-
-        function teste2() {
-
-            // objteste = '{"name":"Ricardo", "email":"ricardo@ricardo"}';
-
-            // document.getElementById("demo2").innerHTML = objteste;
-
-            // const teste2 = JSON.parse(objteste);
-
-            // document.getElementById("demo").innerHTML = teste2.name;
-
-
-
-            var login = document.getElementById("email").value;
-            var password = document.getElementById("senha").value;
-
-            if (password == senhaTeste) {
-
+            // Verifica se as Variaveis do Login estão corretas
+            if (password == senhaDB || login == emailDB) {
+                
                 alert("Login com Sucesso");
-
+                
+                // Troca o Formulário por Texto
+                const loginSucesso = "<h1> Login feito</h1> <h1> com Sucesso!</h1>";
+                document.getElementById("sucessoLogin").innerHTML = loginSucesso;
+            
             } else {
-
+                
                 alert("Erro ao Cadastrar");
+                
             }
-
         }
 
-        // Envia dados para o Backend  -Metodo "GET"
-        async function getUserName(name) {
-
-            var dataTeste;
-
-            const response = await fetch(`http://localhost:8080/cliente/list/${email}`, {
-
+        
+        // Busca dados no Banco e Retorna elas em formato de variaveis
+        async function getUserData() {
+            // Envia o GET Request
+            const response = await fetch(`http://localhost:8080/cliente/list/${login}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-
                 },
-
             })
+                // Transforma a resposta em JSON
                 .then((response) => {
                     return response.json();
                 })
+                // Busca data dentro do JSON e aloca em variaveis
                 .then((data) => {
-                    let authors = data;
-                    emailTeste = authors.name;
-                    senhaTeste = authors.senha;
+                    // Testar sem a linha baixo
+                    let testeData = data;
 
-
+                    // Console
+                    console.log(testData.name);
+                    console.log(testData.senha);
+                    
+                    // 
+                    emailTeste = testeData.name;
+                    senhaTeste = testeData.senha;
                 });
-
         }
 
 
-        function testeEmail() {
+        
+         // Botão Teste
+        function botaoTeste() {
 
-            document.getElementById("demo").innerHTML = emailTeste;
-            document.getElementById("demo2").innerHTML = senhaTeste;
+            email = document.getElementById("email").value;
+            senha = document.getElementById("senha").value;
 
+            teste12 = getUserData2(email);
+
+            document.getElementById("demo1").innerHTML = teste123.name;
+            document.getElementById("demo2").innerHTML = teste123.senha;
 
         }
 
-
-        async function getUser(email) {
-            const response = await fetch(`http://localhost:8080/cliente/list/${email}`, {
-
+        
+        // Busca dados no Banco e Retorna elas em formato de variaveis
+        async function getUserData2(teste2) {
+            // Envia o GET Request
+            const response = await fetch(`http://localhost:8080/cliente/list/${login}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-
                 },
             })
-                .then(response => response.json())
-                .then(obj = '{"name":' + data.name + ', email:' + data.email + '}');
-
-            const teste123 = JSON.parse(obj);
-
-            document.getElementById("demo2").innerHTML = teste123.name;
-
-            return obj.name;
-
-
-
+                // Transforma a resposta em JSON
+                .then((response) => {
+                    return response.json();
+                })
+                // Busca data dentro do JSON e aloca em variaveis
+                .then((data) => {
+                    // Testar sem a linha baixo
+                    let testeData = data;
+                    teste2 = testeData.name;
+                    
+                });
         }
 
 
@@ -241,26 +240,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        // Teste Lembrar Login
         function rememberLogin() {
 
             var login = document.getElementById("login").value;
