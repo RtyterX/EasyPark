@@ -1,17 +1,26 @@
 package com.example.epark.Entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Component
 @Entity
-public class Cliente {
+@Table(name = "tb_cliente")
+public class Cliente implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	
 	@Id
@@ -30,6 +39,11 @@ public class Cliente {
 
 	public String phone;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "agendamento")
+	private List<Agendamento> agendamento = new ArrayList<>();
+	
+
 	
 	public Cliente() {
 	
