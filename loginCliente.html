@@ -60,10 +60,8 @@
 
 
 <body>
-    <section>
-
+    
         <div class="background">
-
 
             <!---================================================== Pop - Cadastro =================================================================================--->
 
@@ -111,8 +109,8 @@
                         <div></div>
                         <div></div>
                         <button id="novoConfirmaLogin" onclick="confirmaLogin()">Confirma Login</button>
-                        <button id="botaoTeste" onclick="botaoTeste"()">Teste</button>
-
+                        <button id="botaoTeste" onclick="botaoTeste()">Teste</button>
+                        <button id="botaoTeste2" onclick="botaoTeste2()">Teste Cookies</button>
 
                     </div>
 
@@ -121,7 +119,6 @@
             </div>
 
         </div>
-    </section>
 
 
     <!---================================================== Scripts =================================================================================--->
@@ -142,6 +139,7 @@
         function confirmaLogin() {
 
             // Banco de Dados
+            var nameDB;
             var emailDB;
             var senhaDB;
 
@@ -159,6 +157,8 @@
                 // Troca o Formulário por Texto
                 const loginSucesso = "<h1> Login feito</h1> <h1> com Sucesso!</h1>";
                 document.getElementById("sucessoLogin").innerHTML = loginSucesso;
+
+                document.cookie = "name=" + emailDB + "; path=/, "email=" + emailDB + "; path=/,";
             
             } else {
                 
@@ -181,18 +181,22 @@
                 .then((response) => {
                     return response.json();
                 })
+                
                 // Busca data dentro do JSON e aloca em variaveis
                 .then((data) => {
                     // Testar sem a linha baixo
                     let testeData = data;
 
-                    // Console
+                    // Console Logs
                     console.log(testData.name);
+                    console.log(testData.email);
                     console.log(testData.senha);
                     
-                    // 
-                    emailTeste = testeData.name;
-                    senhaTeste = testeData.senha;
+                    // Converte as Variaveis
+                    emailDB = testeData.email;
+                    emailDB = testeData.email;
+                    senhaDB = testeData.senha;
+                    
                 });
         }
 
@@ -237,8 +241,11 @@
 
 
 
+function botaoTeste2() {
 
-
+            document.getElementById("demo1").innerHTML = document.cookie;
+     
+}
 
         
         // Teste Lembrar Login
