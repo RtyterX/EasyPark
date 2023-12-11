@@ -168,6 +168,9 @@
 
             const login = document.getElementById("email").value;
 
+            var nameDB;
+            var emailDB
+
             // Envia o GET Request
             const response = await fetch("http://localhost:8080/cliente/patch/${login}", {
                 method: 'PATCH',
@@ -206,6 +209,8 @@
            if (response.ok) {
 
                 alert("Editou as Informações com Sucesso");
+
+               document.cookie = "name=" + nameDB + "; path=/, "email=" + emailDB + "; path=/,";
                
             } else {
 
