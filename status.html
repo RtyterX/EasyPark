@@ -194,15 +194,26 @@
                     console.log(testData.phone);
                     
                     // Converte as Variaveis
-                    nameOS = testeData.name;
-                    emailOS = testeData.email;
-                    cpfOS = testeData.cpf;
-                    idadeOS = testeData.idade;
-                    phoneOS = testeData.phone;
+                    testeData.name = document.getElementById("name").value;
+                    testeData.email = document.getElementById("email").value;
+                    testeData.cpf = document.getElementById("cpf").value;
+                    testeData.idade = document.getElementById("idade").value;
+                    testeData.phone = document.getElementById("phone").value;
                     
                 });
 
+           // Se der certo...
+           if (response.ok) {
+
+                alert("Editou as Informações com Sucesso");
+               
+            } else {
+
+                alert("Erro ao Editar Informações do Cadastro");
+            };
             
+            getUserData();
+
         }
         
 
@@ -222,6 +233,7 @@
            if (response.ok) {
 
                 alert("Cadastro Deletado com Sucesso");
+                document.location.href = index.html;
                
             } else {
 
