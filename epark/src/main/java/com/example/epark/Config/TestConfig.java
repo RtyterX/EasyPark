@@ -7,8 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.example.epark.Entity.Agendamento;
 import com.example.epark.Entity.Cliente;
 import com.example.epark.Entity.Vagas;
+import com.example.epark.Repository.AgendamentoRepository;
 import com.example.epark.Repository.ClienteRepository;
 import com.example.epark.Repository.VagasRepository;
 
@@ -27,6 +29,8 @@ public class TestConfig implements CommandLineRunner{
 	@Autowired
 	private VagasRepository vagasRepository;
 	
+	@Autowired 
+	private AgendamentoRepository agendamentoRepository;
 	
 	
 
@@ -62,8 +66,13 @@ public class TestConfig implements CommandLineRunner{
 		Vagas a20 = new Vagas(null,"a20");
 		
 		
+		Agendamento b1 = new Agendamento(null,"Rua Itatinga 69",null,null,null);
+		Agendamento b2 = new Agendamento(null,"Rua Itatinga 69",null,null,null);
+		Agendamento b3 = new Agendamento(null,"Rua Itatinga 69",null,null,null);
+		
 		clienteRepository.saveAll(Arrays.asList(c1,c2, c3));
 		vagasRepository.saveAll(Arrays.asList(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20));
+		agendamentoRepository.saveAll(Arrays.asList(b1,b2,b3));
 		
 		
 

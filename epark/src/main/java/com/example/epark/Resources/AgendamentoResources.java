@@ -1,7 +1,6 @@
 package com.example.epark.Resources;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,60 +15,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.epark.Entity.Cliente;
-
-import com.example.epark.Services.ClienteServices;
-
-
+import com.example.epark.Entity.Agendamento;
+import com.example.epark.Services.AgendamentoServices;
 
 @RestController
-@RequestMapping(value = "/cliente")
-public class ClienteResources {
+@RequestMapping(value = "/Agendamento")
+public class AgendamentoResources {
 	
-	public ClienteServices clienteServices;
-
+	public AgendamentoServices agendamentoServices;
+	
 	@Autowired
-    public ClienteResources(ClienteServices clienteServices) {
-		
-		this.clienteServices = clienteServices;
-		
+	public AgendamentoResources(AgendamentoServices agendamentoServices) {
+		this.agendamentoServices = agendamentoServices;
 	}
-	
-	
 	
 	@CrossOrigin
 	@PostMapping(value = "/insert")
-	public ResponseEntity<String> insertCliente(@RequestBody Cliente cliente) {
-		clienteServices.saveCliente(cliente);
+	public ResponseEntity<String> insertAgendamento(@RequestBody Agendamento agendamento) {
+		agendamentoServices.saveAgendamento(agendamento);
 		return new ResponseEntity<>("Conta criada com Sucesso", HttpStatus.OK);
-		
 	}
 	
 	@GetMapping(value = "/list")
-	public ResponseEntity<List<Cliente>> getTodosCliente(){
-		return ResponseEntity.ok(clienteServices.getTodosCliente());
+	public ResponseEntity<List<Agendamento>> getTodosAgendamentos(){
+		return ResponseEntity.ok(agendamentoServices.getTodosAgendamentos());
 		
 	}
 	
-	
-	@CrossOrigin
-	@GetMapping(value = "/list/{cpf}")
-	public ResponseEntity<Optional<Cliente>> getCliente(@PathVariable String cpf){
-		return ResponseEntity.ok(clienteServices.getCliente(cpf));
-	}
-	
-	
 	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity<Void> deletar(@PathVariable Long id) {
-		clienteServices.deleteCliente(id);
+		agendamentoServices.deleteAgendamento(id);
 		return ResponseEntity.noContent().build();	
 	}
 	
-	
 	@PutMapping(value = "/up/{id}")
-	public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente obj) {
-		obj = clienteServices.update(id, obj);
+	public ResponseEntity<Agendamento> update(@PathVariable Long id, @RequestBody Agendamento obj) {
+		obj = agendamentoServices.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 }
