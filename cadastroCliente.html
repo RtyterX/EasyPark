@@ -58,54 +58,53 @@
 </header>
 
 <body>
+    <section>
 
-    <div class="background">
+        <div class="background">
 
-        <!---================================================== Pop - Cadastro =================================================================================--->
 
-        <div class="container-cadastro">
+            <!---================================================== Pop - Cadastro =================================================================================--->
 
-            <form id="cadlog-btn">
-
-                <div id="teste">
+            <div class="container-cadastro">
+                <form action="." method="post">
 
                     <div class="cadastro-title">
-                        <h1>CRIE SUA CONTA!</h1>
+                        <p class="cad-title"><strong>Cadastro</strong></p>
                     </div>
-
                     <div class="cadastro-infos">
                         <input class="input-cadastro" type="text" id="name" placeholder="Nome" name="name" required>
 
-                        <input class="input-cadastro" type="text" id="email" placeholder="E-mail" name="email" required>
-
-                        <input class="input-cadastro" type="senha" id="senha" placeholder="Senha" name="senha" required>
-
                         <input class="input-cadastro" type="text" id="cpf" placeholder="CPF" name="cpf" required>
 
-                        <input class="input-cadastro" type="text" id="idade" placeholder="Idade" name="idade" required>
+                        <input class="input-cadastro" type="text" id="age" placeholder="Idade" name="age" required>
+
+                        <input class="input-cadastro" type="text" id="email" placeholder="E-mail" name="email" required>
+
+                        <input class="input-cadastro" type="password" id="password" placeholder="Senha" name="psw"
+                            required>
 
                         <input class="input-cadastro" type="text" id="phone" placeholder="Telefone" name="phone"
                             required>
 
-                        <button class="cadlog-btn" type="submit">Criar conta</button>
+
                     </div>
 
-                    <div class="login-btn">
-                        <a class="cadlog-btn" href="/loginCliente.html">
-                            <button type="button" class="cancelbtn">Faça Login</button>
-                        </a>
+                    <div class="log">
+
+                        <button class="cria-btn" type="submit" onclick="criaConta()">Criar Conta</button>
+
+                        <a class="cadlog-btn" href="/loginCliente.html"><button class="btn-login"
+                                type="button">Login</button></a>
+
                     </div>
 
-                </div>
 
-            </form>
-
+                </form>
+            </div>
         </div>
-        
-    </div>
 
+    </section>
 
-    <!---================================================== Scripts =================================================================================--->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -119,63 +118,26 @@
 
     <script>
 
-        // Liga a função criaConta com o Botão de Cadastrar (submit)
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('cadlog-btn');
-            form.addEventListener('submit', criaConta);
-        });
+        var username;
 
+        function criaConta() {
 
-        // Envia cadastro para o Backend  -Metodo "Post"
-        async function criaConta(event) {
-            event.preventDefault();
+            fetch("https.localhost:8080/cliente/insert");
 
-            // Variaveis
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const senha = document.getElementById("senha").value;
-            const cpf = document.getElementById("cpf").value;
-            const idade = document.getElementById("idade").value;
-            const phone = document.getElementById("phone").value;
+            var name = document.getElementById("name").value;
+            var cpf = document.getElementById("cpf").value;
+            var age = document.getElementById("age").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var phone = document.getElementById("phone").value;
 
-            // String para JSON
-            const obj = {
+            const obj = { name, email, password, cpf, age, phone };
 
-                name: name,
-                email: email,
-                senha: senha,
-                cpf: cpf,
-                idade: idade,
-                phone: phone
-
-            };
-
-            // Envia o JSON para a URL correta
-            const response = await fetch("http://localhost:8080/cliente/insert", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-
-                // Envio do JSON
-                body: JSON.stringify(obj),
-
-            });
-
-            if (response.ok) {
-
-                // Cadastro Feito com Sucesso
-                const cadastroSucesso = "<h1> Cadastro feito</h1> <h1> com Sucesso!</h1>";
-                document.getElementById("teste").innerHTML = cadastroSucesso;
-
-            } else {
-
-                alert("Erro ao Cadastrar");
-            }
+            const myJSON = JSON.stringify(obj);
 
         }
 
-        // Teste 
+
         function verificaLogin(username) {
 
             var myInput = document.getElementById("psw");
@@ -235,6 +197,7 @@
                     length.classList.add("invalid");
                 }
             }
+
 
         }
 

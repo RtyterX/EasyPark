@@ -1,4 +1,3 @@
-
 .container-login {
   margin-top: 10%;
   display: grid;
@@ -16,7 +15,7 @@
   justify-items: center;
   align-items: center;
   font-size: 30px;
-  font-family: 'Archivo Black', sans-serif;
+  font-family: 'Abel', sans-serif;
   color: white;
   background-color: rgb(53, 158, 243);
   border-radius: 10px;
@@ -29,11 +28,11 @@
   height: 50px;
   padding: 0 5px 0 10px;
   border-radius: 5px;
-  border: 1px solid #dddfe2;  
+  border: 1px solid #dddfe2;
 
 }
 
-.inputbar:hover{
+.inputbar:hover {
   transition: 0.2s;
   background-color: rgb(240, 240, 240);
 
@@ -42,16 +41,53 @@
 .logincad-btns {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 35px;
   margin-top: 20px;
   margin-left: 20px;
 }
 
+.true-loginbtn {
+  border: 0.5px solid grey;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 40px 5px 40px;
+}
 
+.true-cadastrobtn{
+  border: 0.5px solid grey;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 30px 5px 30px;
+}
 
+.downlayer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
+}
 
+.fgt-password{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
 
+.true-cadastrobtn:hover{
+  transition: 0.2s;
+  cursor:pointer;
+  background-color: rgb(238, 238, 238);
+  transform: scale(1.10); 
+}
 
+.true-loginbtn:hover{
+  transition: 0.2s;
+  cursor:pointer;
+  background-color: rgb(238, 238, 238);
+  transform: scale(1.10); 
+}
 
 
 

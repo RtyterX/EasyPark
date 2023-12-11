@@ -1,7 +1,5 @@
 package com.example.epark.Services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +9,9 @@ import com.example.epark.Repository.ClienteRepository;
 @Service
 public class ClienteServices {
 
-	private ClienteRepository clienteRepository;
 	
 	@Autowired
-	public ClienteServices(ClienteRepository clienteRepository) {
-		this.clienteRepository = clienteRepository;
-	}
+	private ClienteRepository clienteRepository;
 	
 	
 	public Cliente saveCliente(Cliente cliente) {
@@ -24,20 +19,8 @@ public class ClienteServices {
 		
 	}
 	
-	public void deleteCliente(Long id) {
+	public void delete(Long id) {
 		clienteRepository.deleteById(id);
 	}
 	
-	public List<Cliente> getTodosCliente(){
-		return clienteRepository.findAll();
-	}
-	
-	public Cliente update(long id, Cliente cliente) {
-		if (clienteRepository.existsById(id)) {
-			cliente.setId(id);
-			return clienteRepository.save(cliente);
-		} else {
-			throw new IllegalArgumentException("Cliente " + id + " não existe" );
-		}
-	}
 }
