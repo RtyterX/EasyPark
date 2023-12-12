@@ -31,7 +31,7 @@
 
 </head>
 
-<header>
+<header onload="verifyLogin()">
 
     <!---================================================== Barra de navegação =================================================================================--->
 
@@ -44,12 +44,14 @@
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
                     <a href="choose.html" class="btn_nav">Reserva</a>
                     <form class="pesquisa">
-                        <a href="loginCliente.html" class="user_btn"><span
+                        <div id="loginUser">
+                            <a href="status.html" class="user_btn"><p id="nameUser">Nome Usuario</p><span
                                 class="material-symbols-outlined">account_circle</span></a>
-                        <div>
-                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                            <div>
+                                <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                            </div>
+                            <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                         </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                     </form>
                 </div>
             </nav>
@@ -115,6 +117,7 @@
     <script>
 
         // Banco de Dados
+        var user = readCookie("username"); 
         var nameDB;
         var emailDB;
         var senhaDB;
@@ -196,6 +199,39 @@
             localStorage.setItem("passwordLogin", password);
 
         }
+
+
+        // Verifica se Usuario está logado
+        function verifyLogin() {
+
+        // Verifica o user Cookie
+            
+            if(user != null){ 
+
+                const changeHTML = "<a href="loginCliente.html" class="user_btn"><span
+                                        class="material-symbols-outlined">account_circle</span><p id="nameUser">Nome Usuario</p></a>
+                                    <div>
+                                        <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                                    </div>
+                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>";
+
+                document.getElementById("loginUser").innerHTML = changeHTML;
+                document.getElementById("nameUser").innerHTML = nameUser;
+                
+            }else{ 
+                
+                const changeHTML = "<a href="loginCliente.html" class="user_btn"><span
+                                        class="material-symbols-outlined">account_circle</span></a>
+                                    <div>
+                                        <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                                    </div>
+                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>";
+                    
+                document.getElementById("loginUser").innerHTML = changeHTML;
+                
+                } 
+            } 
+        } 
 
     </script>
 
