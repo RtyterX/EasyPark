@@ -94,24 +94,23 @@
 
     <script>
 
-      // Busca dados no Backend - Metodo "GET" e preenche os campos 
+        // Variaveis
+        var nameOS;
+        var emailOS;
+        var cpfOS;
+        var idadeOS;
+        var phoneOS;
+
+        // Busca dados no Backend - Metodo "GET" e preenche os campos 
         async function getUserData() {
 
             // Teste - Usar Cookies
-            const login = "ricardo@ricardo;
+            const login = "ricardo@ricardo";
 
-           // const login = document.cookie;
+            // const login = document.cookie;
 
-
-            // Variaveis
-            const nameOS;
-            const emailOS;
-            const cpfOS;
-            const idadeOS;
-            const phoneOS;
-                
             // Envia o GET Request
-            const response = await fetch("http://localhost:8080/cliente/list/${login}", {
+            const response = await fetch(`http://localhost:8080/cliente/list/${login}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,27 +120,27 @@
                 .then((response) => {
                     return response.json();
                 })
-                
+
                 // Busca data dentro do JSON e aloca em variaveis
                 .then((data) => {
-                    
+
                     // Testar sem a linha baixo
                     let testeData = data;
 
-                    // Console Logs
-                    console.log(testData.name);
-                    console.log(testData.email);
-                    console.log(testData.cpf);
-                    console.log(testData.idade);
-                    console.log(testData.phone);
-                    
                     // Converte as Variaveis
                     nameOS = testeData.name;
                     emailOS = testeData.email;
                     cpfOS = testeData.cpf;
                     idadeOS = testeData.idade;
                     phoneOS = testeData.phone;
-                    
+
+                    // Console Logs
+                    console.log(nameOS);
+                    console.log(emailOS);
+                    console.log(cpfOS);
+                    console.log(idadeOS);
+                    console.log(phoneOS);
+
                 });
 
             // Joga o valor das Variaveis em seus respectivos Campos
@@ -150,21 +149,11 @@
             document.getElementById("cpf").value = cpfOS;
             document.getElementById("idade").value = idadeOS;
             document.getElementById("phone").value = phoneOS;
-
-            // Se der certo...
-            if (response.ok) {
-
-                alert("Dados Resgatados com Sucesso");
-
-            } else {
-
-                alert("Erro ao Resgatar dados do Banco");
-            }
-
-        }
-        
             
-        function editaCasdastro() {
+        }
+
+
+        async function editaCasdastro() {
 
             const login = document.getElementById("email").value;
 
@@ -182,10 +171,10 @@
                 .then((response) => {
                     return response.json();
                 })
-                
+
                 // Busca data dentro do JSON e aloca em variaveis
                 .then((data) => {
-                    
+
                     // Testar sem a linha baixo
                     let testeData = data;
 
@@ -195,51 +184,81 @@
                     console.log(testData.cpf);
                     console.log(testData.idade);
                     console.log(testData.phone);
-                    
+
                     // Converte as Variaveis
                     testeData.name = document.getElementById("name").value;
                     testeData.email = document.getElementById("email").value;
                     testeData.cpf = document.getElementById("cpf").value;
                     testeData.idade = document.getElementById("idade").value;
                     testeData.phone = document.getElementById("phone").value;
-                    
+
                 });
 
-           // Se der certo...
-           if (response.ok) {
+            // Se der certo...
+            if (response.ok) {
 
                 alert("Editou as Informações com Sucesso");
 
-               document.cookie = "name=" + nameDB + "; path=/, "email=" + emailDB + "; path=/,";
-               
+                document.cookie = "name=" + nameDB + "; path=/, email=" + emailDB + "; path=/,";
+
             } else {
 
                 alert("Erro ao Editar Informações do Cadastro");
             };
-            
+
             getUserData();
 
         }
-        
 
-        function deletaCadastro() {
+
+        async function deletaCadastro() {
 
             // Pega o Valor do Campo email e transforma em Variavel
-           const login = document.getElementById("email").value;
+            const login = document.getElementById("email").value;
+
+            var idDelete
+
+            // Envia o GET Request
+            const getID = await fetch(`http://localhost:8080/cliente/list/${login}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                // Transforma a resposta em JSON
+                .then((response) => {
+                    return response.json();
+                })
+
+                // Busca data dentro do JSON e aloca em variaveis
+                .then((data) => {
+
+                    // Testar sem a linha baixo
+                    let testeData = data;
+
+                    // Console Logs
+                    console.log(testeData.idade);
+
+                    // Converte as Variaveis
+                    idDelete = testeData.id;
+
+                });
+
 
             //  Envia o Método Delete para o Banco
-           const response = await fetch("http://localhost:8080/cliente/delete/" + login, {
-           method: 'DELETE',
-           headers: {
-               'Content-Type': 'application/json',
-           },
+            const response = await fetch("http://localhost:8080/cliente/delete/" + idDelete, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
-           // Se der certo...
-           if (response.ok) {
+            // Se der certo...
+            if (response.ok) {
 
                 alert("Cadastro Deletado com Sucesso");
                 document.location.href = index.html;
-               
+
             } else {
 
                 alert("Erro ao deletar Cadastro");
