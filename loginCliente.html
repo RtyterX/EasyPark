@@ -62,11 +62,10 @@
 
         <div class="background">
 
-
             <!---================================================== Pop - Login =================================================================================--->
 
             <div class="container-login">
-                <form action="." method="post">
+                <form>
                     <p class="login-title">Faça seu Login!</p>
 
                     <div class="login-inputs">
@@ -78,7 +77,7 @@
 
                     <div class="logincad-btns">
                         <div class="login-btn">
-                            <button class="true-loginbtn" type="submit" onclick="confirmaLogin()">Login</button>
+                            <button class="true-loginbtn" onclick="confirmaLogin()">Login</button>
 
                         </div>
 
@@ -115,121 +114,78 @@
 
     <script>
 
+        // Banco de Dados
+        var nameDB;
+        var emailDB;
+        var senhaDB;
+
         // Confirma o Login
         function confirmaLogin() {
 
-            // Banco de Dados
-            var nameDB;
-            var emailDB;
-            var senhaDB;
-
-            // Formulario de Login
-            const login = document.getElementById("email").value;
-            const password = document.getElementById("senha").value;
+            const login = document.getElementById("login").value;
 
             getUserData(login);
 
+        }
+
+
+        // Busca dados no Banco e Retorna elas em formato de variaveis
+        async function getUserData(loginUser) {
+
+            // Envia o GET Request
+            const response = await fetch("http://localhost:8080/cliente/list/" + loginUser, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                // Transforma a resposta em JSON
+                .then((response) => {
+                    return response.json();
+                })
+
+                // Busca data dentro do JSON e aloca em variaveis
+                .then((data) => {
+
+                    // Testar sem a linha baixo
+                    let testeData = data;
+
+                    // Converte as Variaveis
+                    nameDB = testeData.name;
+                    emailDB = testeData.email;
+                    senhaDB = testeData.senha;
+
+                    // Console Logs
+                    console.log(nameDB);
+                    console.log(emailDB);
+                    console.log(senhaDB);
+
+                });
+
+            // Formulario de Login
+            const login = document.getElementById("login").value;
+            const password = document.getElementById("password").value;
+
             // Verifica se as Variaveis do Login estão corretas
-            if (password == senhaDB || login == emailDB) {
-                
+            if (password == senhaDB) {
+
                 alert("Login com Sucesso");
-                
-                // Troca o Formulário por Texto
-                const loginSucesso = "<h1> Login feito</h1> <h1> com Sucesso!</h1>";
-                document.getElementById("sucessoLogin").innerHTML = loginSucesso;
 
-                document.cookie = "name=" + nameDB + "; path=/, email= "+ emailDB + "; path=/,";
+                // Cookie com as Variaveis
+                document.cookie = "name=" + nameDB + "; path=/, email=" + emailDB + "; path = /,";
 
-                document.location.href = index.html;
-            
+                // Muda para a Proxima Pagina
+                const nextPage = "index.html";
+                document.location.href = nextPage;
+
             } else {
-                
+
                 alert("Erro ao Cadastrar");
-                
+
             }
         }
 
-        
-        // Busca dados no Banco e Retorna elas em formato de variaveis
-        async function getUserData() {
-            // Envia o GET Request
-            const response = await fetch(`http://localhost:8080/cliente/list/${login}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                // Transforma a resposta em JSON
-                .then((response) => {
-                    return response.json();
-                })
-                
-                // Busca data dentro do JSON e aloca em variaveis
-                .then((data) => {
-                    // Testar sem a linha baixo
-                    let testeData = data;
 
-                    // Console Logs
-                    console.log(testData.name);
-                    console.log(testData.email);
-                    console.log(testData.senha);
-                    
-                    // Converte as Variaveis
-                    emailDB = testeData.email;
-                    emailDB = testeData.email;
-                    senhaDB = testeData.senha;
-                    
-                });
-        }
-
-
-        
-         // Botão Teste
-        function botaoTeste() {
-
-            email = document.getElementById("email").value;
-            senha = document.getElementById("senha").value;
-
-            teste12 = getUserData2(email);
-
-            document.getElementById("demo1").innerHTML = teste123.name;
-            document.getElementById("demo2").innerHTML = teste123.senha;
-
-        }
-
-        
-        // Busca dados no Banco e Retorna elas em formato de variaveis
-        async function getUserData2(teste2) {
-            // Envia o GET Request
-            const response = await fetch(`http://localhost:8080/cliente/list/${login}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                // Transforma a resposta em JSON
-                .then((response) => {
-                    return response.json();
-                })
-                // Busca data dentro do JSON e aloca em variaveis
-                .then((data) => {
-                    // Testar sem a linha baixo
-                    let testeData = data;
-                    teste2 = testeData.name;
-                    
-                });
-        }
-
-
-
-
-function botaoTeste2() {
-
-            document.getElementById("demo1").innerHTML = document.cookie;
-     
-}
-
-        
         // Teste Lembrar Login
         function rememberLogin() {
 
@@ -240,7 +196,6 @@ function botaoTeste2() {
             localStorage.setItem("passwordLogin", password);
 
         }
-
 
     </script>
 
