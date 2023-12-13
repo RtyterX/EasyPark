@@ -43,7 +43,7 @@
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
                     <a href="agendamento.html" class="btn_nav">Agendamento</a>
                     <form id="loginUser" class="pesquisa">
-                        <a href="loginCliente.html" class="user_btn">
+                        <a href="login.html" class="user_btn">
                             <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
                         </a>
                         <div>
@@ -75,7 +75,7 @@
                     <div class="login-btn">
                         <button class="true-loginbtn" onclick="confirmaLogin()">Login</button>
                     </div>
-                    <a class="cadlog-btn" href="/cadastroCliente.html"><button class="true-cadastrobtn"
+                    <a class="cadlog-btn" href="/cadastro.html"><button class="true-cadastrobtn"
                             type="button">Cadastra-se</button></a> 
                 </div>
                 <div class="downlayer">
@@ -103,7 +103,7 @@
 
     <script>
 
-        <!---=============  Variaveis  =============--->
+        // <!---=============  Variaveis  =============--->
 
         // JavaScript
         var username;
@@ -114,7 +114,7 @@
         var emailDB;
         var senhaDB;
 
-         <!---=============  Realiza Login  =============--->
+        // <!---=============  Realiza Login  =============--->
         
         // Confirma o Login
         function confirmaLogin() {
@@ -177,8 +177,7 @@
 
                 if (remember) {
 
-                    // Cria um Cookie para o Login com Lembre-se
-                    document.cookie = `username=${login}; password=${password} expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`;
+k
 
                 }
                 
@@ -193,7 +192,7 @@
             }
         }
 
-         <!---=============  Login Check  =============--->
+        // <!---=============  Login Check  =============--->
         
         // Verifica se Usuario está logado
         function verifyLogin() {
@@ -214,7 +213,7 @@
 
             } else {
 
-                const changeHTML = `<a href="loginCliente.html" class="user_btn"><span
+                const changeHTML = `<a href="login.html" class="user_btn"><span
                                         class="material-symbols-outlined">account_circle</span>Login</a>
                                     <div>
                                         <input type="search" id="pesquisa" placeholder="Pesquisar...">
@@ -252,7 +251,7 @@
             }
         }
 
-        <!---=============  Coockies  =============--->
+        // <!---=============  Coockies  =============--->
 
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
