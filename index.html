@@ -35,20 +35,24 @@
 
     <!---================================================== Barra de navegação =================================================================================--->
 
-    <div class="container-homepage">
+    <div class="containerX">
         <div class="navbar">
             <nav>
                 <div class="botoes">
                     <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
                     <a href="index.html#contato" class="btn_nav">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="choose.html" class="btn_nav">Reserva</a>
+                    <a href="choose.html" class="btn_nav">Agendamento</a>
                     <form class="pesquisa">
-                        <a href="loginCliente.html" class="user_btn"><span class="material-symbols-outlined">account_circle</span></a>
-                        <div>
-                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                        <div id="loginUser">
+                            <a href="loginCliente.html" class="user_btn">
+                                <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
+                            </a>
+                            <div>
+                                <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                            </div>
+                            <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                         </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                     </form>
                 </div>
             </nav>
@@ -56,7 +60,7 @@
     </div>
 </header>
 
-<body>
+<body onload="verifyLogin()">
 
     <!---================================================== Slider =================================================================================--->
     <div class="slider-container">
@@ -131,114 +135,148 @@
         </div>
     </div>
 
-        <!---================================================== Informações =================================================================================--->
-        <div class="informacoes"> 
+    <!---================================================== Informações =================================================================================--->
+    <div class="informacoes">
 
 
-            <div class="vantagens-title">
-                <div>
-                    <h1><span class="titulo">Sobre Nós</span></h1>
-                </div>
-            </div>
-            <div class="infos-container">
-                <div class="infos-texto">
-                    <p>Bem-vindo à EasyPark®! Como líder confiável no setor de estacionamento, estamos comprometidos em
-                        simplificar sua experiência de estacionamento.
-                        Com nossa plataforma intuitiva e eficiente, oferecemos conveniência incomparável em áreas urbanas
-                        movimentadas.
-                        Conte conosco para uma solução de estacionamento sem complicações e um serviço dedicado ao cliente
-                        excepcional.
-                        Descubra como a EasyPark® pode transformar sua experiência de estacionamento hoje. <br>
-                        Temos a premissa em atender bem suas necessidades demobilidade urbana da maneira mais fácil
-                        possível!
-                        <br>
-                    </p>
-                </div>
-    
-                <div class="infos-img">
-                    <img src="/img/07.png" alt="Carro estacionado">
-                </div>
-            </div>
-    
-    
-    
-    
-            <!---================================================== Parceiros =================================================================================--->
-    
-            <div class="vantagens-title">
-                <div>
-                    <h1><span class="titulo">Seja Parceiro</span></h1>
-                </div>
-            </div>
-            <div class="infos-container01">
-    
-                <div class="infos-img01">
-                    <img src="/img/08.png" alt="Assinatra de contrato">
-                </div>
-                <div class="infos-texto01">
-                    <p>
-                        Não perca tempo e faça agora mesmo o cadastro do seu estacionamento para que ele ganhe destaque
-                        entre os usuários que confiam em nossos serviços.
-                        Ao se juntar a nós, estará dando um passo importante para que todos possam desfrutar de uma vida com
-                        mais facilidades.
-                        Estamos ansiosos para colaborar contigo e fazer a diferença!
-                        <br>
-                    </p>
-                </div>
-            </div>
-    
-            <!---================================================== Sobre nós =================================================================================--->
-    
-    
-            <div class="vantagens-title">
-                <div>
-                    <h1><span class="titulo">Contato</span></h1>
-                </div>
-            </div>
-            <div class="infos-container">
-                <div class="infos-texto">
-                    <p>
-                        Somos uma empresa que busca transformar a procura por estacionamentos em uma experiência tranquila e
-                        conveniente, economizando seu tempo e energia.
-                        Com a nossa aplicação, conectamos você a uma rede de estacionamentos registrados, permitindo que
-                        reserve
-                        sua vaga antecipadamente.
-                        Diga adeus à frustração de circular em busca de um lugar para estacionar.
-                        Na EasyPark, a reserva de vaga é apenas um toque na tela do seu dispositivo.
-                    </p>
-                </div>
-    
-                <div class="infos-img">
-                    <img src="img/09.png" alt="Cidade">
-                </div>
-            </div>
-    
-        </div>
-    
-        <!---================================================== Rodapé =================================================================================--->
-    
-        <div class="direitos-container">
-            <div class="logofull-img">
-                <img src="/img/logo_ep_full.png" alt="">
-    
-                <div class="direitos-text">
-                    <h2>
-                        Alguns direitos reservados a EasyPark®
-                    </h2>
-                </div>
-            </div>
-    
-            <div class="contato">
-                <h2>Contatos</h2>
-                <div class="infos-contatos">
-                    <p>(19) 2470-0122</p>
-                    <p>easypark@contato.com.br</p>
-                    <img src="/img/socialmedia.png" alt="">
-                </div>
+        <div class="vantagens-title">
+            <div>
+                <h1><span class="titulo">Sobre Nós</span></h1>
             </div>
         </div>
-    
-    
-    
-    
-    </body>
+        <div class="infos-container">
+            <div class="infos-texto">
+                <p>Bem-vindo à EasyPark®! Como líder confiável no setor de estacionamento, estamos comprometidos em
+                    simplificar sua experiência de estacionamento.
+                    Com nossa plataforma intuitiva e eficiente, oferecemos conveniência incomparável em áreas urbanas
+                    movimentadas.
+                    Conte conosco para uma solução de estacionamento sem complicações e um serviço dedicado ao cliente
+                    excepcional.
+                    Descubra como a EasyPark® pode transformar sua experiência de estacionamento hoje. <br>
+                    Temos a premissa em atender bem suas necessidades demobilidade urbana da maneira mais fácil
+                    possível!
+                    <br>
+                </p>
+            </div>
+
+            <div class="infos-img">
+                <img src="/img/07.png" alt="Carro estacionado">
+            </div>
+        </div>
+
+
+
+
+        <!---================================================== Parceiros =================================================================================--->
+
+        <div class="vantagens-title">
+            <div>
+                <h1><span class="titulo">Seja Parceiro</span></h1>
+            </div>
+        </div>
+        <div class="infos-container01">
+
+            <div class="infos-img01">
+                <img src="/img/08.png" alt="Assinatra de contrato">
+            </div>
+            <div class="infos-texto01">
+                <p>
+                    Não perca tempo e faça agora mesmo o cadastro do seu estacionamento para que ele ganhe destaque
+                    entre os usuários que confiam em nossos serviços.
+                    Ao se juntar a nós, estará dando um passo importante para que todos possam desfrutar de uma vida com
+                    mais facilidades.
+                    Estamos ansiosos para colaborar contigo e fazer a diferença!
+                    <br>
+                </p>
+            </div>
+        </div>
+
+        <!---================================================== Sobre nós =================================================================================--->
+
+
+        <div class="vantagens-title">
+            <div>
+                <h1><span class="titulo">Contato</span></h1>
+            </div>
+        </div>
+        <div class="infos-container">
+            <div class="infos-texto">
+                <p>
+                    Somos uma empresa que busca transformar a procura por estacionamentos em uma experiência tranquila e
+                    conveniente, economizando seu tempo e energia.
+                    Com a nossa aplicação, conectamos você a uma rede de estacionamentos registrados, permitindo que
+                    reserve
+                    sua vaga antecipadamente.
+                    Diga adeus à frustração de circular em busca de um lugar para estacionar.
+                    Na EasyPark, a reserva de vaga é apenas um toque na tela do seu dispositivo.
+                </p>
+            </div>
+
+            <div class="infos-img">
+                <img src="img/09.png" alt="Cidade">
+            </div>
+        </div>
+
+    </div>
+
+    <!---================================================== Rodapé =================================================================================--->
+
+    <div class="direitos-container">
+        <div class="logofull-img">
+            <img src="/img/logo_ep_full.png" alt="">
+
+            <div class="direitos-text">
+                <h2>
+                    Alguns direitos reservados a EasyPark®
+                </h2>
+            </div>
+        </div>
+
+        <div class="contato">
+            <h2>Contatos</h2>
+            <div class="infos-contatos">
+                <p>(19) 2470-0122</p>
+                <p>easypark@contato.com.br</p>
+                <img src="/img/socialmedia.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var username;
+
+        // Verifica se Usuario está logado
+        function verifyLogin() {
+
+            username = localStorage.username;
+
+            if (username != null) {
+
+                const changeHTML = `<a href="status.html" class="user_btn"><span
+                            class="material-symbols-outlined">account_circle</span><p id="nameUser">Nome Usuario</p></a>
+                        <div>
+                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                        </div>
+                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+
+                document.getElementById("loginUser").innerHTML = changeHTML;
+                document.getElementById("nameUser").innerHTML = username;
+
+            } else {
+
+                const changeHTML = `<a href="loginCliente.html" class="user_btn"><span
+                            class="material-symbols-outlined">account_circle</span>Teste</a>
+                        <div>
+                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                        </div>
+                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+
+                document.getElementById("loginUser").innerHTML = changeHTML;
+
+            }
+        }
+
+    </script>
+
+</body>

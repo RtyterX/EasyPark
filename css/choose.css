@@ -4,7 +4,6 @@ body {
     flex-direction: column;
     height: 100%;
     overflow: visible;
-    background-image: url("/img/background.webp");
     background-size: cover;
    
 }
