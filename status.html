@@ -31,10 +31,9 @@
 
 </head>
 
+<!---================================================== Barra de navegação =================================================================================--->
+    
 <header>
-
-    <!---================================================== Barra de navegação =================================================================================--->
-
     <div class="containerX">
         <div class="navbar">
             <nav>
@@ -42,9 +41,8 @@
                     <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
                     <a href="index.html#contato" class="btn_nav">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="choose.html" class="btn_nav">Agendamento</a>
+                    <a href="agendamento.html" class="btn_nav">Agendamento</a>
                     <form id="loginUser" class="pesquisa">
-
                         <a href="loginCliente.html" class="user_btn">
                             <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
                         </a>
@@ -52,7 +50,6 @@
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
                         </div>
                         <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
-
                     </form>
                 </div>
             </nav>
@@ -60,6 +57,8 @@
     </div>
 </header>
 
+<!---================================================== Body =================================================================================--->
+    
 <body class=body-status onload="getUserData()">
 
     <div class="container-status">
@@ -97,7 +96,8 @@
         </div>
     </div>
 
-
+<!---================================================== Scripts =================================================================================--->
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -110,21 +110,23 @@
 
     <script>
 
-        // Variaveis
+        <!---============= Váriaveis =============--->
+
+        // JavaScript
+        var username;
+        var login = localStorage.email;
+            
+        // Banco de Dados
         var nameOS;
         var emailOS;
         var cpfOS;
         var idadeOS;
         var phoneOS;
 
-        var username;
-        var login;
+        <!---============= Puxa os Dados do Banco =============--->
 
         // Busca dados no Backend - Metodo "GET" e preenche os campos 
         async function getUserData() {
-
-            // Teste - Usar Cookies
-            login = localStorage.email;
 
             verifyLogin();
 
@@ -171,10 +173,9 @@
 
         }
 
-
+       <!---============= Edita Cadastro =============--->
+            
         async function editaCasdastro() {
-
-            const login = document.getElementById("email").value;
 
             var nameDB;
             var emailDB
@@ -229,14 +230,19 @@
 
         }
 
+        <!---============= Deleta Cadastro =============--->
 
         async function deletaCadastro() {
 
-            // Pega o Valor do Campo email e transforma em Variavel
-            const login = document.getElementById("email").value;
+            var idDelete;
+            var result = confirm("Want to delete?");
+            if (result) {
+                getID();
+                deleteUser(idDelete);
+            }        
+        }
 
-
-            var idDelete
+        async function getID() {
 
             // Envia o GET Request
             const getID = await fetch(`http://localhost:8080/cliente/list/${login}`, {
@@ -263,8 +269,10 @@
                     idDelete = testeData.id;
 
                 });
+            }
 
-
+            async function deleteUser(idDelete) {
+                
             //  Envia o Método Delete para o Banco
             const response = await fetch("http://localhost:8080/cliente/delete/" + idDelete, {
                 method: 'DELETE',
@@ -285,11 +293,9 @@
 
                 alert("Erro ao deletar Cadastro");
             }
-
-
-
         }
 
+        <!---============= Verifica Login =============--->
 
         // Verifica se Usuario está logado
         function verifyLogin() {
@@ -311,7 +317,7 @@
             } else {
 
                 const changeHTML = `<a href="loginCliente.html" class="user_btn"><span
-                            class="material-symbols-outlined">account_circle</span>Teste</a>
+                            class="material-symbols-outlined">account_circle</span>Login</a>
                         <div>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
                         </div>
@@ -321,7 +327,6 @@
 
             }
         }
-
 
     </script>
 
