@@ -8,7 +8,7 @@
     <!-- Meta tags Obrigatórias -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/loginCliente.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -31,7 +31,7 @@
 
 </head>
 
-<header onload="verifyLogin()">
+<header>
 
     <!---================================================== Barra de navegação =================================================================================--->
 
@@ -42,16 +42,15 @@
                     <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
                     <a href="index.html#contato" class="btn_nav">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="choose.html" class="btn_nav">Reserva</a>
-                    <form class="pesquisa">
-                        <div id="loginUser">
-                            <a href="status.html" class="user_btn"><p id="nameUser">Nome Usuario</p><span
-                                class="material-symbols-outlined">account_circle</span></a>
-                            <div>
-                                <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                            </div>
-                            <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
+                    <a href="choose.html" class="btn_nav">Agendamento</a>
+                    <form id="loginUser" class="pesquisa">
+                        <a href="loginCliente.html" class="user_btn">
+                            <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
+                        </a>
+                        <div>
+                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
                         </div>
+                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                     </form>
                 </div>
             </nav>
@@ -59,7 +58,7 @@
     </div>
 </header>
 
-<body>
+<body onload="verifyLogin()" class="body-login">
     <section>
 
         <div class="background">
@@ -67,35 +66,33 @@
             <!---================================================== Pop - Login =================================================================================--->
 
             <div class="container-login">
-                <form>
-                    <p class="login-title">Faça seu Login!</p>
 
-                    <div class="login-inputs">
-                        <input class="inputbar" type="text" id="login" placeholder="E-mail" name="uname" required>
+                <p class="login-title">Faça seu Login!</p>
 
-                        <input class="inputbar" type="password" id="password" placeholder="Senha" name="psw" required>
-                    </div>
+                <div class="login-inputs">
+                    <input class="inputbar" type="text" id="login" placeholder="E-mail" name="uname" required>
 
+                    <input class="inputbar" type="password" id="password" placeholder="Senha" name="psw" required>
+                </div>
 
-                    <div class="logincad-btns">
-                        <div class="login-btn">
-                            <button class="true-loginbtn" onclick="confirmaLogin()">Login</button>
-
-                        </div>
-
-                        <a class="cadlog-btn" href="/cadastroCliente.html"><button class="true-cadastrobtn"
-                                type="button">Cadastro</button></a>
+                <div class="logincad-btns">
+                    <div class="login-btn">
+                        <button class="true-loginbtn" onclick="confirmaLogin()">Login</button>
 
                     </div>
 
-                    <div class="downlayer">
-                        <input class="checkbox" type="checkbox" name="remember" onclick="rememberLogin()"> Lembre-me
-                    </div>
-                    <div class="fgt-password">
-                        <a href="#">Esqueceu a senha?</a>
-                    </div>
+                    <a class="cadlog-btn" href="/cadastroCliente.html"><button class="true-cadastrobtn"
+                            type="button">Cadastra-se</button></a>
+
+                </div>
+
+                <div class="downlayer">
+                    <input class="checkbox" type="checkbox" name="remember" onclick="rememberLogin()"> Lembre-me
+                </div>
+                <div class="fgt-password">
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
             </div>
-            </form>
 
         </div>
     </section>
@@ -117,7 +114,6 @@
     <script>
 
         // Banco de Dados
-        var user = readCookie("username"); 
         var nameDB;
         var emailDB;
         var senhaDB;
@@ -158,6 +154,13 @@
                     emailDB = testeData.email;
                     senhaDB = testeData.senha;
 
+                    // Local Storage Variaveis
+
+                    localStorage.setItem("username", nameDB);
+                    localStorage.setItem("email", emailDB);
+                    username = localStorage.username;
+
+
                     // Console Logs
                     console.log(nameDB);
                     console.log(emailDB);
@@ -172,10 +175,7 @@
             // Verifica se as Variaveis do Login estão corretas
             if (password == senhaDB) {
 
-                alert("Login com Sucesso");
-
-                // Cookie com as Variaveis
-                document.cookie = "name=" + nameDB + "; path=/, email=" + emailDB + "; path = /,";
+                console.log(username);
 
                 // Muda para a Proxima Pagina
                 const nextPage = "index.html";
@@ -204,34 +204,33 @@
         // Verifica se Usuario está logado
         function verifyLogin() {
 
-        // Verifica o user Cookie
-            
-            if(user != null){ 
+            username = localStorage.username;
 
-                const changeHTML = "<a href="loginCliente.html" class="user_btn"><span
+            if (username != null) {
+
+                const changeHTML = `<a href="status.html" class="user_btn"><span
                                         class="material-symbols-outlined">account_circle</span><p id="nameUser">Nome Usuario</p></a>
                                     <div>
                                         <input type="search" id="pesquisa" placeholder="Pesquisar...">
                                     </div>
-                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>";
+                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
 
                 document.getElementById("loginUser").innerHTML = changeHTML;
-                document.getElementById("nameUser").innerHTML = nameUser;
-                
-            }else{ 
-                
-                const changeHTML = "<a href="loginCliente.html" class="user_btn"><span
-                                        class="material-symbols-outlined">account_circle</span></a>
+                document.getElementById("nameUser").innerHTML = username;
+
+            } else {
+
+                const changeHTML = `<a href="loginCliente.html" class="user_btn"><span
+                                        class="material-symbols-outlined">account_circle</span>Teste</a>
                                     <div>
                                         <input type="search" id="pesquisa" placeholder="Pesquisar...">
                                     </div>
-                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>";
-                    
+                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+
                 document.getElementById("loginUser").innerHTML = changeHTML;
-                
-                } 
-            } 
-        } 
+
+            }
+        }
 
     </script>
 
