@@ -30,11 +30,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Archivo+Black&display=swap" rel="stylesheet">
 
 </head>
-
+    
+<!---================================================== Cabeçario =================================================================================--->
+    
 <header>
-
-    <!---================================================== Barra de navegação =================================================================================--->
-
     <div class="containerX">
         <div class="navbar">
             <nav>
@@ -42,7 +41,7 @@
                     <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
                     <a href="index.html#contato" class="btn_nav">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="choose.html" class="btn_nav">Agendamento</a>
+                    <a href="agendamento.html" class="btn_nav">Agendamento</a>
                     <form class="pesquisa">
                         <div id="loginUser">
                             <a href="loginCliente.html" class="user_btn">
@@ -60,9 +59,11 @@
     </div>
 </header>
 
+<!---================================================== Body =================================================================================--->    
+
 <body onload="verifyLogin()">
 
-    <!---================================================== Slider =================================================================================--->
+    <!---============= Slider =============--->
     <div class="slider-container">
         <div class="slide-img fade">
             <img src="img/01.jpg" style="width:auto">
@@ -101,8 +102,7 @@
         }
     </script>
 
-    <!---================================================== Grid - Vantagens =================================================================================--->
-
+    <!---============= Grid - Vantagens =============--->
     <div id="sobrenos" class="vantagens-title">
         <div>
             <h1><span class="teste">Vantagens</span></h1>
@@ -135,10 +135,8 @@
         </div>
     </div>
 
-    <!---================================================== Informações =================================================================================--->
+    <!---============= Informações =============--->
     <div class="informacoes">
-
-
         <div class="vantagens-title">
             <div>
                 <h1><span class="titulo">Sobre Nós</span></h1>
@@ -164,11 +162,7 @@
             </div>
         </div>
 
-
-
-
-        <!---================================================== Parceiros =================================================================================--->
-
+        <!---============= Parceiros =============--->
         <div class="vantagens-title">
             <div>
                 <h1><span class="titulo">Seja Parceiro</span></h1>
@@ -191,9 +185,7 @@
             </div>
         </div>
 
-        <!---================================================== Sobre nós =================================================================================--->
-
-
+        <!---============= Sobre Nós =============--->
         <div class="vantagens-title">
             <div>
                 <h1><span class="titulo">Contato</span></h1>
@@ -219,8 +211,7 @@
 
     </div>
 
-    <!---================================================== Rodapé =================================================================================--->
-
+    <!---============= Rodapé =============--->
     <div class="direitos-container">
         <div class="logofull-img">
             <img src="/img/logo_ep_full.png" alt="">
@@ -242,10 +233,16 @@
         </div>
     </div>
 
+    <!---================================================== Scripts =================================================================================--->    
+
     <script>
 
+        <!---============= Variaveis =============--->
         var username;
 
+        
+        <!---============= Verifica se há usuario Logado =============--->
+            
         // Verifica se Usuario está logado
         function verifyLogin() {
 
@@ -266,14 +263,14 @@
             } else {
 
                 const changeHTML = `<a href="loginCliente.html" class="user_btn"><span
-                            class="material-symbols-outlined">account_circle</span>Teste</a>
+                            class="material-symbols-outlined">account_circle</span>Login</a>
                         <div>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
                         </div>
                         <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
 
                 document.getElementById("loginUser").innerHTML = changeHTML;
-
+                
             }
         }
 
