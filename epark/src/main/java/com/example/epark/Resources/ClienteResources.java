@@ -45,6 +45,7 @@ public class ClienteResources {
 		
 	}
 	
+	@CrossOrigin
 	@GetMapping(value = "/list")
 	public ResponseEntity<List<Cliente>> getTodosCliente(){
 		return ResponseEntity.ok(clienteServices.getTodosCliente());

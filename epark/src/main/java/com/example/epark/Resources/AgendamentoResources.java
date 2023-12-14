@@ -36,12 +36,16 @@ public class AgendamentoResources {
 		return new ResponseEntity<>("Conta criada com Sucesso", HttpStatus.OK);
 	}
 	
+	
+	@CrossOrigin
 	@GetMapping(value = "/list")
 	public ResponseEntity<List<Agendamento>> getTodosAgendamentos(){
 		return ResponseEntity.ok(agendamentoServices.getTodosAgendamentos());
 		
 	}
 	
+	
+	@CrossOrigin
 	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity<Void> deletar(@PathVariable Long id) {
 		agendamentoServices.deleteAgendamento(id);
