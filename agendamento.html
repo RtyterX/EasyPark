@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Easy Park - Cadastro Cliente</title>
+    <title>Easy Park - Agendamento </title>
 
     <!-- Meta tags Obrigatórias -->
     <meta charset="UTF-8">
@@ -31,75 +31,108 @@
 
 </head>
 
+<!---================================================== Barra de navegação =================================================================================--->
+
 <header>
-
-    <!---================================================== Barra de navegação =================================================================================--->
-
-    <div class="container-cadastropage">
-        <div class="navbar">
+    <div class="container-navbar-cadastro">
+        <div class="navbar-cadastro">
             <nav>
-                <div class="botoes">
-                    <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
-                    <a href="index.html#contato" class="btn_nav">Contato</a>
-                    <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="choose.html" class="btn_nav">Reserva</a>
-                    <form class="pesquisa">
-                        <a href="login.html" class="user_btn"><span
-                                class="material-symbols-outlined">account_circle</span></a>
-                        <div>
+                <div class="botoes-cad">
+
+                    <div><a href="index.html" class="logo-cad"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a>
+                    </div>
+                    <a href="index.html#contato" class="btn_nav-cad">Contato</a>
+                    <a href="index.html#sobrenos" class="btn_nav-cad">Sobre nós</a>
+                    <a href="agendamento.html" class="btn_nav-cad">Agendamento</a>
+
+                    <form class="pesquisa-cad">
+
+                        <div class="user-mix-cad" id="loginUser">
+                            <a href="login.html" class="user_btn-cad">
+                                <span class="material-symbols-outlined"> account_circle</span>
+                            </a>
+                            <p class=name-user-cad id="nameUser"> <strong> Login </strong> </p>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                            <a href="#" class=search_btn-cad><span class="material-symbols-outlined"> search </span>
+                            </a>
                         </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                     </form>
+
                 </div>
             </nav>
         </div>
     </div>
 </header>
 
-<body>
-
-    <div class="background">
-
-        <!---================================================== Pop - Cadastro =================================================================================--->
-
-        <div class="container-cadastro">
-
-            <form id="agenda-btn">
-
-                <div id="teste">
-
-                    <div class="cadastro-title">
-                        <h1>Agendamento</h1>
-                    </div>
-
-                    <div class="cadastro-infos">
-                        <input class="input-cadastro" type="text
-                        " id="endereco" placeholder="Endereço" name="endereco" required>
-
-                        <input class="input-cadastro" type="datetime-local" id="data" placeholder="Data" name="data" required>
-
-                        <input class="input-cadastro" type="text" id="cliente" placeholder="Cliente" name="cliente" required>
-
-                        <input class="input-cadastro" type="text" id="vaga" placeholder="Vaga" name="vaga" required>
+<!---================================================== Body =================================================================================--->
 
 
-                        <button class="agenda-btn" type="submit">Criar agendamento</button>
-                    </div>
+<body class="body-cadastro" onload="carregaAgendamento()">
 
+    <div class="container-login">
+
+                <p class="login-title">Vaga Agendada</p>
+
+                <div class="login-inputs">
+                    <input class="inputbar" type="text" id="cliente" placeholder="Cliente" name="cliente" required>
+                    <input class="inputbar" type="text" id="endereco" placeholder="Endereço do Local" name="endereco" required>
+                    <input class="inputbar" type="text" id="vaga" placeholder="Vaga" name="vaga" required>
+                    <input class="inputbar" type="text" id="dia" placeholder="00/00/0000 00:00" name="dia" required>
+                </div>
+
+                <div class="logincad-btns">
                     <div class="login-btn">
-                        <a class="cadlog-btn" href="/index.html">
-                            <button type="button" class="cancelbtn">Voltar</button>
-                        </a>
+                        <button class="true-loginbtn" onclick="deletaAgendamento()">Deletar Agendamento</button>
                     </div>
+                </div>
+            </div>
+    
+
+    <div class="container-cadastro">
+
+        <form id="cadlog-btn">
+
+            <div id="teste">
+
+                <div class="cadastro-title">
+                    <h1>Agende sua Vaga! </h1>
+                </div>
+
+                <div class="cadastro-infos">
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="criaCliente" placeholder="Nome do Cliente" name="criaCliente"
+                            required>
+                    </div>
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="criaEndereco" placeholder="Endereço do Local" name="criaEndereco"
+                            required>
+                    </div>
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="criaVaga" placeholder="Vaga" name="criaVaga"
+                            required>
+                    </div>
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="criaDia" placeholder="00/00/0000 00:00" name="criaDia"
+                            required>
+                    </div>
+
 
                 </div>
 
-            </form>
+                <div class="logincad-btns">
+                    <button class="cria-btn" type="submit">Agendar</button>
+                </div>
 
-        </div>
-        
+            </div>
+
+        </form>
+
     </div>
+
 
 
     <!---================================================== Scripts =================================================================================--->
@@ -116,32 +149,43 @@
 
     <script>
 
+        // <!---============= Váriaveis =============--->
+
+        // JavaScript
+        var username;
+
+        // Converte as Variaveis
+        var clienteDB;
+        var enderecoDB;
+        var vagasDB;
+        var dateDB;
+
         // Liga a função criaConta com o Botão de Cadastrar (submit)
         document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('agenda-btn');
+            const form = document.getElementById('cadlog-btn');
             form.addEventListener('submit', criaAgendamento);
         });
 
+        // <!---============= Cria Agendamento =============--->
 
-        // Envia cadastro para o Backend  -Metodo "Post"
+        // Envia o Agendamento para o Backend  -Metodo "Post"
         async function criaAgendamento(event) {
             event.preventDefault();
 
             // Variaveis
-            const endereco = document.getElementById("endereco").value;
-            const data = document.getElementById("data").value;
-            const cliente = document.getElementById("cliente").value;
-            const vaga = document.getElementById("vaga").value;
-        
+            const cliente = document.getElementById("criaCliente").value;
+            const endereco = document.getElementById("criaEndereco").value;
+            const vagas = document.getElementById("criaVaga").value;
+            const date = document.getElementById("criaDia").value;
 
             // String para JSON
             const obj = {
 
-                endereco: endereco,
-                data: data,
                 cliente: cliente,
-                vagas: vaga,
-
+                endereco: endereco,
+                vagas: vagas,
+                date: date
+                
             };
 
             // Envia o JSON para a URL correta
@@ -158,9 +202,9 @@
 
             if (response.ok) {
 
-                // Cadastro Feito com Sucesso
-                const cadastroSucesso = "Agendamento +"+ id +"  concluido!";
-                document.getElementById("teste").innerHTML = cadastroSucesso;
+                // Recarrega a Pagina
+                const reloadPage = "agendamento.html";
+                document.location.href = reloadPage;
 
             } else {
 
@@ -169,67 +213,122 @@
 
         }
 
-        // Teste 
-        function verificaLogin(username) {
+ // <!---============= Carrega o Agendamento =============--->
 
-            var myInput = document.getElementById("psw");
-            var letter = document.getElementById("letter");
-            var capital = document.getElementById("capital");
-            var number = document.getElementById("number");
-            var length = document.getElementById("length");
+        // Busca dados no Backend - Metodo "GET" e preenche os campos 
+        async function carregaAgendamento() {
 
-            // When the user clicks on the password field, show the message box
-            myInput.onfocus = function () {
-                document.getElementById("message").style.display = "block";
+            verifyLogin();
+
+            // Envia o GET Request
+            const response = await fetch(`http://localhost:8080/agendamento/list/1`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                // Transforma a resposta em JSON
+                .then((response) => {
+                    return response.json();
+                })
+
+                // Busca data dentro do JSON e aloca em variaveis
+                .then((data) => {
+
+                    // Testar sem a linha baixo
+                    let testeData = data;
+
+                    // Converte as Variaveis
+                    clienteDB = testeData.cliente;
+                    enderecoDB = testeData.endereco;
+                    vagasDB = testeData.vagas;
+                    dateDB = testeData.date;
+
+                    // Console Logs
+                    console.log(clienteDB);
+                    console.log(vagasDB);
+                    console.log(vagasDB);
+                    console.log(dateDB);
+
+                });
+
+            // Joga o valor das Variaveis em seus respectivos Campos
+            document.getElementById("name").value = clienteDB;
+            document.getElementById("email").value = enderecoDB;
+            document.getElementById("cpf").value = vagasDB;
+            document.getElementById("idade").value = dateDB;
+
+            if (response.ok) {
+
+
+            } else {
+
+                alert("Erro ao Cadastrar");
             }
 
-            // When the user clicks outside of the password field, hide the message box
-            myInput.onblur = function () {
-                document.getElementById("message").style.display = "none";
+            if (document.getElementById("endereco").value != null) {
+
+                const tiraForm = `<h1> Delete o Formulário para realizar outro Agendamento </h1>`;
+                document.getElementById("cadlog-btn").innerHTML = tiraForm;
+        
             }
+        }
 
-            // When the user starts to type something inside the password field
-            myInput.onkeyup = function () {
-                // Validate lowercase letters
-                var lowerCaseLetters = /[a-z]/g;
-                if (myInput.value.match(lowerCaseLetters)) {
-                    letter.classList.remove("invalid");
-                    letter.classList.add("valid");
-                } else {
-                    letter.classList.remove("valid");
-                    letter.classList.add("invalid");
-                }
 
-                // Validate capital letters
-                var upperCaseLetters = /[A-Z]/g;
-                if (myInput.value.match(upperCaseLetters)) {
-                    capital.classList.remove("invalid");
-                    capital.classList.add("valid");
-                } else {
-                    capital.classList.remove("valid");
-                    capital.classList.add("invalid");
-                }
 
-                // Validate numbers
-                var numbers = /[0-9]/g;
-                if (myInput.value.match(numbers)) {
-                    number.classList.remove("invalid");
-                    number.classList.add("valid");
-                } else {
-                    number.classList.remove("valid");
-                    number.classList.add("invalid");
-                }
+        // <!---============= Deleta Cadastro =============--->
 
-                // Validate length
-                if (myInput.value.length >= 8) {
-                    length.classList.remove("invalid");
-                    length.classList.add("valid");
-                } else {
-                    length.classList.remove("valid");
-                    length.classList.add("invalid");
-                }
+        async function deletaAgendamento() {
+
+            var result = confirm("Quer mesmo deletar seu Agendamento?");
+            if (result) {
+
+            //  Envia o Método Delete para o Banco
+            const response = await fetch("http://localhost:8080/agendamento/delete/1", {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            localStorage.clear();
+
+            // Se der certo...
+            if (response.ok) {
+
+                alert("Cadastro Deletado com Sucesso");
+                document.location.href = index.html;
+
+            } else {
+
+                alert("Erro ao deletar Cadastro");
             }
+        }
+        }
 
+        
+        // <!---============= Verifica Login =============--->
+
+        // Verifica se Usuario está logado
+        function verifyLogin() {
+
+            username = localStorage.username;
+
+            if (username != null) {
+
+                const changeHTML = `<a href="status.html" class="user_btn">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                </a>
+                <p class=name-user id="nameUser"> <strong> Login </strong> </p>
+                <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+
+
+                document.getElementById("loginUser").innerHTML = changeHTML;
+                document.getElementById("nameUser").innerHTML = username;
+
+
+            }
         }
 
     </script>
