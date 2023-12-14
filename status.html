@@ -32,7 +32,7 @@
 </head>
 
 <!---================================================== Barra de navegação =================================================================================--->
-    
+
 <header>
     <div class="containerX">
         <div class="navbar">
@@ -58,7 +58,7 @@
 </header>
 
 <!---================================================== Body =================================================================================--->
-    
+
 <body class=body-status onload="getUserData()">
 
     <div class="container-status">
@@ -96,8 +96,8 @@
         </div>
     </div>
 
-<!---================================================== Scripts =================================================================================--->
-    
+    <!---================================================== Scripts =================================================================================--->
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -115,7 +115,7 @@
         // JavaScript
         var username;
         var login = localStorage.email;
-            
+
         // Banco de Dados
         var nameOS;
         var emailOS;
@@ -173,8 +173,8 @@
 
         }
 
-       // <!---============= Edita Cadastro =============--->
-            
+        // <!---============= Edita Cadastro =============--->
+
         async function editaCasdastro() {
 
             var nameDB;
@@ -239,7 +239,7 @@
             if (result) {
                 getID();
                 deleteUser(idDelete);
-            }        
+            }
         }
 
         async function getID() {
@@ -269,10 +269,10 @@
                     idDelete = testeData.id;
 
                 });
-            }
+        }
 
-            async function deleteUser(idDelete) {
-                
+        async function deleteUser(idDelete) {
+
             //  Envia o Método Delete para o Banco
             const response = await fetch("http://localhost:8080/cliente/delete/" + idDelete, {
                 method: 'DELETE',
@@ -287,7 +287,7 @@
             if (response.ok) {
 
                 alert("Cadastro Deletado com Sucesso");
-                document.location.href = index.html;   
+                document.location.href = index.html;
 
             } else {
 
@@ -304,26 +304,17 @@
 
             if (username != null) {
 
-                const changeHTML = `<a href="status.html" class="user_btn"><span
-                            class="material-symbols-outlined">account_circle</span><p id="nameUser">Nome Usuario</p></a>
-                        <div>
-                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                        </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+                const changeHTML = `<a href="status.html" class="user_btn">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                </a>
+                <p class=name-user id="nameUser"> <strong> Login </strong> </p>
+                <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+
 
                 document.getElementById("loginUser").innerHTML = changeHTML;
                 document.getElementById("nameUser").innerHTML = username;
 
-            } else {
-
-                const changeHTML = `<a href="login.html" class="user_btn"><span
-                            class="material-symbols-outlined">account_circle</span>Login</a>
-                        <div>
-                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                        </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
-
-                document.getElementById("loginUser").innerHTML = changeHTML;
 
             }
         }

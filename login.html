@@ -32,14 +32,15 @@
 </head>
 
 <!---================================================== Barra de navegação =================================================================================--->
-    
+
 <header>
     <div class="container-navbar-login">
         <div class="navbar-login">
             <nav>
                 <div class="botoes">
 
-                    <div><a href="index.html" class="logo-login"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
+                    <div><a href="index.html" class="logo-login"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a>
+                    </div>
                     <a href="index.html#contato" class="btn_nav-login">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav-login">Sobre nós</a>
                     <a href="agendamento.html" class="btn_nav-login">Agendamento</a>
@@ -52,7 +53,8 @@
                             </a>
                             <p class=name-user-login id="nameUser"> <strong> Login </strong> </p>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                            <a href="#" class=search_btn-login><span class="material-symbols-outlined"> search </span> </a>
+                            <a href="#" class=search_btn-login><span class="material-symbols-outlined"> search </span>
+                            </a>
                         </div>
                     </form>
 
@@ -81,7 +83,7 @@
                         <button class="true-loginbtn" onclick="confirmaLogin()">Login</button>
                     </div>
                     <a class="cadlog-btn" href="/cadastro.html"><button class="true-cadastrobtn"
-                            type="button">Cadastra-se</button></a> 
+                            type="button">Cadastra-se</button></a>
                 </div>
                 <div class="downlayer">
                     <input class="checkbox" type="checkbox" name="remember" onclick="rememberCheck()"> Lembre-me
@@ -89,7 +91,7 @@
                 <div class="fgt-password">
                     <a href="#">Esqueceu a senha?</a>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -113,23 +115,24 @@
         // JavaScript
         var username;
         var remember = new Boolean(false);
-            
+
         // Banco de Dados
         var nameDB;
         var emailDB;
         var senhaDB;
+        var idclienteDB;
 
         // <!---=============  Realiza Login  =============--->
-        
+
         // Confirma o Login
         function confirmaLogin() {
-            
+
             // Cria Variavel Login
             const login = document.getElementById("login").value;
-            
+
             // Utiliza o Login para pegar o Dados via metodo GET
             getUserData(login);
-            
+
         }
 
         // Busca dados no Banco e Retorna elas em formato de variaveis
@@ -157,10 +160,12 @@
                     nameDB = testeData.name;
                     emailDB = testeData.email;
                     senhaDB = testeData.senha;
+                    idclienteDB = testeData.id;
 
                     // Local Storage Variaveis
                     localStorage.setItem("username", nameDB);
                     localStorage.setItem("email", emailDB);
+                    localStorage.setItem("clienteId", idclienteDB);
                     username = localStorage.username;
 
 
@@ -168,6 +173,7 @@
                     console.log(nameDB);
                     console.log(emailDB);
                     console.log(senhaDB);
+                    console.log(idclienteDB);
 
                 });
 
@@ -182,23 +188,24 @@
 
                 if (remember) {
 
-k
+                    // Cria um Cookie para o Login com Lembre-se
+                    document.cookie = `username=${login}; password=${password} expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`;
 
                 }
-                
+
                 // Muda para a Proxima Pagina
                 const nextPage = "index.html";
                 document.location.href = nextPage;
 
             } else {
-                
+
                 alert("Erro ao Cadastrar");
-            
+
             }
         }
 
         // <!---=============  Login Check  =============--->
-        
+
         // Verifica se Usuario está logado
         function verifyLogin() {
 
@@ -206,33 +213,24 @@ k
 
             if (username != null) {
 
-                const changeHTML = `<a href="status.html" class="user_btn"><span
-                                        class="material-symbols-outlined">account_circle</span><p id="nameUser">Nome Usuario</p></a>
-                                    <div>
-                                        <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                                    </div>
-                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+                const changeHTML = `<a href="status.html" class="user_btn">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                </a>
+                <p class=name-user id="nameUser"> <strong> Login </strong> </p>
+                <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+
 
                 document.getElementById("loginUser").innerHTML = changeHTML;
                 document.getElementById("nameUser").innerHTML = username;
 
-            } else {
-
-                const changeHTML = `<a href="login.html" class="user_btn"><span
-                                        class="material-symbols-outlined">account_circle</span>Login</a>
-                                    <div>
-                                        <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                                    </div>
-                                    <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
-
-                document.getElementById("loginUser").innerHTML = changeHTML;
-
             }
 
             verifyRemember();
+
         }
 
-         // Verifica se há Login para Lembrar
+        // Verifica se há Login para Lembrar
         function verifyRemember() {
 
             var login = getCookie(login);
@@ -246,7 +244,7 @@ k
 
         }
 
-         // Check Box Boolean
+        // Check Box Boolean
         function rememberCheck() {
 
             if (remember) {
@@ -260,37 +258,37 @@ k
 
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            let expires = "expires="+ d.toUTCString();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
 
         function getCookie(cname) {
-             let name = cname + "=";
-             let decodedCookie = decodeURIComponent(document.cookie);
-             let ca = decodedCookie.split(';');
-             for(let i = 0; i <ca.length; i++) {
-                  let c = ca[i];
-                  while (c.charAt(0) == ' ') {
-                       c = c.substring(1);
-                  }
-                  if (c.indexOf(name) == 0) {
-                       return c.substring(name.length, c.length);
-                  }
-             }
-             return "";
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
         }
 
         function checkCookie() {
             let username = getCookie("username");
             if (username != "") {
-                 alert("Welcome again " + username);
+                alert("Welcome again " + username);
             } else {
-                 username = prompt("Please enter your name:", "");
-                 if (username != "" && username != null) {
-                      setCookie("username", username, 365);
-                 }
-             }
+                username = prompt("Please enter your name:", "");
+                if (username != "" && username != null) {
+                    setCookie("username", username, 365);
+                }
+            }
         }
 
     </script>

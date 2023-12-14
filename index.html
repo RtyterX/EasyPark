@@ -8,7 +8,9 @@
     <!-- Meta tags Obrigatórias -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loginCliente.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="shortcut icon" href="/img/logo_ep_icon (1).ico">
 
     <!---Icone Search--->
@@ -252,10 +254,16 @@
 
             if (username != null) {
 
+                const changeHTML = `<a href="status.html" class="user_btn">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                </a>
+                <p class=name-user id="nameUser"> <strong> Login </strong> </p>
+                <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
 
 
-            } else {
-
+                document.getElementById("loginUser").innerHTML = changeHTML;
+                document.getElementById("nameUser").innerHTML = username;
 
 
             }

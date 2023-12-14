@@ -39,7 +39,8 @@
             <nav>
                 <div class="botoes-cad">
 
-                    <div><a href="index.html" class="logo-cad"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
+                    <div><a href="index.html" class="logo-cad"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a>
+                    </div>
                     <a href="index.html#contato" class="btn_nav-cad">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav-cad">Sobre nós</a>
                     <a href="agendamento.html" class="btn_nav-cad">Agendamento</a>
@@ -52,7 +53,8 @@
                             </a>
                             <p class=name-user-cad id="nameUser"> <strong> Login </strong> </p>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                            <a href="#" class=search_btn-cad><span class="material-symbols-outlined"> search </span> </a>
+                            <a href="#" class=search_btn-cad><span class="material-symbols-outlined"> search </span>
+                            </a>
                         </div>
                     </form>
 
@@ -96,8 +98,7 @@
                     </div>
 
                     <div class="info">
-                        <input class=input-cadastro type="text" id="cpf" placeholder="CPF" name="cpf"
-                            required>
+                        <input class=input-cadastro type="text" id="cpf" placeholder="CPF" name="cpf" required>
                     </div>
 
                     <div class="info">
@@ -212,26 +213,17 @@
 
             if (username != null) {
 
-                const changeHTML = `<a href="status.html" class="user_btn"><span
-                class="material-symbols-outlined">account_circle</span><p id="nameUser">Nome Usuario</p></a>
-            <div>
+                const changeHTML = `<a href="status.html" class="user_btn">
+                    <span class="material-symbols-outlined"> account_circle</span>
+                </a>
+                <p class=name-user id="nameUser"> <strong> Login </strong> </p>
                 <input type="search" id="pesquisa" placeholder="Pesquisar...">
-            </div>
-            <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+                <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
+
 
                 document.getElementById("loginUser").innerHTML = changeHTML;
                 document.getElementById("nameUser").innerHTML = username;
 
-            } else {
-
-                const changeHTML = `<a href="login.html" class="user_btn"><span
-                class="material-symbols-outlined">account_circle</span>Login</a>
-            <div>
-                <input type="search" id="pesquisa" placeholder="Pesquisar...">
-            </div>
-            <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
-
-                document.getElementById("loginUser").innerHTML = changeHTML;
 
             }
         }
