@@ -19,7 +19,7 @@ import com.example.epark.Entity.Agendamento;
 import com.example.epark.Services.AgendamentoServices;
 
 @RestController
-@RequestMapping(value = "/Agendamento")
+@RequestMapping(value = "/agendamento")
 public class AgendamentoResources {
 	
 	public AgendamentoServices agendamentoServices;

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,8 +39,10 @@ public class Cliente implements Serializable {
 
 	public String phone;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "agendamento")
+	
+	
+	
+	@OneToMany(mappedBy = "cliente")
 	private List<Agendamento> agendamento = new ArrayList<>();
 	
 

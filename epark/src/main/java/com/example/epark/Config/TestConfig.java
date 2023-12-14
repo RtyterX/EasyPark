@@ -21,7 +21,7 @@ import com.example.epark.Repository.VagasRepository;
 @Configuration
 @Profile("test")
 public class TestConfig implements CommandLineRunner{
-
+	
 	
 	@Autowired
 	private ClienteRepository clienteRepository;
@@ -66,9 +66,9 @@ public class TestConfig implements CommandLineRunner{
 		Vagas a20 = new Vagas(null,"a20");
 		
 		
-		Agendamento b1 = new Agendamento(null,"Rua Itatinga 69",null,null,null);
-		Agendamento b2 = new Agendamento(null,"Rua Itatinga 69",null,null,null);
-		Agendamento b3 = new Agendamento(null,"Rua Itatinga 69",null,null,null);
+		Agendamento b1 = new Agendamento(null,"Rua Itatinga 69","13/12/2023 19:28",c1, a2);
+		Agendamento b2 = new Agendamento(null,"Rua Itatinga 69","13/12/2023 19:28",c2,a5);
+		Agendamento b3 = new Agendamento(null,"Rua Itatinga 69","13/12/2023 19:28",c3,a10);
 		
 		clienteRepository.saveAll(Arrays.asList(c1,c2, c3));
 		vagasRepository.saveAll(Arrays.asList(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20));
@@ -77,5 +77,8 @@ public class TestConfig implements CommandLineRunner{
 		
 
 	}
+	
+	
+	
 
 }

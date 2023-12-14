@@ -58,6 +58,12 @@ public class ClienteResources {
 		return ResponseEntity.ok(clienteServices.getCliente(cpf));
 	}
 	
+	@CrossOrigin
+	@GetMapping(value = "/list-email/{email}")
+	public ResponseEntity<Optional<Cliente>> getClienteEmail(@PathVariable String email){
+		return ResponseEntity.ok(clienteServices.getClienteByEmail(email));
+	}
+	
 	
 	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity<Void> deletar(@PathVariable Long id) {
@@ -72,4 +78,5 @@ public class ClienteResources {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+
 }

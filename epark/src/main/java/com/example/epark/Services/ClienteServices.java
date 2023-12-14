@@ -37,6 +37,10 @@ public class ClienteServices {
 		return clienteRepository.findByCpf(cpf);
 	}
 	
+	public Optional<Cliente> getClienteByEmail(String email){
+		return clienteRepository.findByEmail(email);
+	}
+	
 	
 	public Cliente update(long id, Cliente cliente) {
 		if (clienteRepository.existsById(id)) {
@@ -46,4 +50,5 @@ public class ClienteServices {
 			throw new IllegalArgumentException("Cliente " + id + " não existe" );
 		}
 	}
+	
 }

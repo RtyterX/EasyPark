@@ -29,8 +29,8 @@ public class Vagas implements Serializable {
 	public String name;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "agendamento")
-	private List<Agendamento> agendamento = new ArrayList<>();
+	@OneToMany(mappedBy = "vagas")
+	private List<Agendamento> vagas = new ArrayList<>();
 	
 
 

@@ -1,12 +1,11 @@
 package com.example.epark.Entity;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +21,7 @@ import jakarta.persistence.Table;
 public class Agendamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	public Agendamento agendamento;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,28 +29,25 @@ public class Agendamento implements Serializable{
 	
 	public String endereco;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
-	private Instant data;
+	private String data;
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
-	private Agendamento cliente; 
+	private Cliente cliente; 
 	
 	
 	
 	@ManyToOne
 	@JoinColumn(name = "id_vagas")
-	private Agendamento vagas;
+	private Vagas vagas;
 	
 	
-	public Agendamento() {
-		
-	}
-
-
-
-	public Agendamento(Long id, String endereco, Instant data, Agendamento cliente, Agendamento vagas) {
+    public Agendamento() {
+    	
+    }
+   
+	public Agendamento(Long id, String endereco, String data, Cliente cliente, Vagas vagas) {
 		super();
 		this.id = id;
 		this.endereco = endereco;
@@ -59,7 +55,7 @@ public class Agendamento implements Serializable{
 		this.cliente = cliente;
 		this.vagas = vagas;
 	}
-
+	
 
 
 	public Long getId() {
@@ -86,37 +82,22 @@ public class Agendamento implements Serializable{
 
 
 
-	public Instant getData() {
+	public String getData() {
 		return data;
 	}
 
 
 
-	public void setData(Instant data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
 
-
-	public Agendamento getCliente() {
-		return cliente;
-	}
-
-
-
-	public void setCliente(Agendamento cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-
-
-	public Agendamento getVagas() {
-		return vagas;
-	}
-
-
-
-	public void setVagas(Agendamento vagas) {
+	public void setVagas(Vagas vagas) {
 		this.vagas = vagas;
 	}
 
