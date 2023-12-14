@@ -75,18 +75,42 @@
                     </div>
 
                     <div class="cadastro-infos">
-                        <input class="input-cadastro" type="text" id="name" placeholder="Nome" name="name" required>
 
-                        <input class="input-cadastro" type="text" id="email" placeholder="E-mail" name="email" required>
+                        <div class="info">
+                            <label for="name"><b>Nome</b></label>
+                            <input class=input-info type="text" id="name" placeholder="Coloque seu Nome" name="name"
+                                required>
+                        </div>
 
-                        <input class="input-cadastro" type="senha" id="senha" placeholder="Senha" name="senha" required>
+                        <div class="info">
+                            <label for="email"><b>E-mail</b></label>
+                            <input class=input-info type="text" id="email" placeholder="exemplo@gmail.com" name="email"
+                                required>
+                        </div>
 
-                        <input class="input-cadastro" type="text" id="cpf" placeholder="CPF" name="cpf" required>
+                        <div class="info">
+                            <label for="cpf"><b>Senha</b></label>
+                            <input class="input-cadastro" type="password" id="senha" placeholder="Senha" name="senha"
+                                required>
+                        </div>
 
-                        <input class="input-cadastro" type="text" id="idade" placeholder="Idade" name="idade" required>
+                        <div class="info">
+                            <label for="cpf"><b>CPF</b></label>
+                            <input class=input-info type="text" id="cpf" placeholder="000.000.000-00" name="cpf"
+                                required>
+                        </div>
 
-                        <input class="input-cadastro" type="text" id="phone" placeholder="Telefone" name="phone"
-                            required>
+                        <div class="info">
+                            <label for="idade"><b>Data de Nascimento</b></label>
+                            <input class=input-info type="text" id="idade" placeholder="__/__/____" name="idade"
+                                required>
+                        </div>
+
+                        <div class="info">
+                            <label for="phone"><b>Telefone</b></label>
+                            <input class=input-info type="text" id="phone" placeholder="00 00000-0000 " name="phone"
+                                required>
+                        </div>
 
                         <button class="cadlog-btn" type="submit">Criar conta</button>
                     </div>
