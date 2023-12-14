@@ -153,6 +153,7 @@
 
         // JavaScript
         var username;
+        var idclienteDB =  localStorage.clienteId;
 
         // Converte as Variaveis
         var clienteDB;
@@ -239,7 +240,7 @@
                     let testeData = data;
 
                     // Converte as Variaveis
-                    clienteDB = testeData.cliente;
+                    clienteDB = username;
                     enderecoDB = testeData.endereco;
                     vagasDB = testeData.vagas;
                     dateDB = testeData.date;
