@@ -178,7 +178,7 @@
         async function editaCasdastro() {
 
             var nameDB;
-            var emailDB;
+            var emailDB
 
             // Envia o GET Request
             const response = await fetch("http://localhost:8080/cliente/patch/${login}", {
@@ -235,12 +235,10 @@
         async function deletaCadastro() {
 
             var idDelete;
-
-            var result = confirm("Tem certeza que deja deletar?");
+            var result = confirm("Want to delete?");
             if (result) {
-
                 getID();
-
+                deleteUser(idDelete);
             }        
         }
 
@@ -264,20 +262,19 @@
                     // Testar sem a linha baixo
                     let testeData = data;
 
+                    // Console Logs
+                    console.log(testeData.idade);
+
                     // Converte as Variaveis
                     idDelete = testeData.id;
 
-                    console.log(idDelete);
-
                 });
-
-                deleteUser(idDelete);
             }
 
-            async function deleteUser(id) {
+            async function deleteUser(idDelete) {
                 
             //  Envia o Método Delete para o Banco
-            const response = await fetch("http://localhost:8080/cliente/delete/" + id, {
+            const response = await fetch("http://localhost:8080/cliente/delete/" + idDelete, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -290,10 +287,7 @@
             if (response.ok) {
 
                 alert("Cadastro Deletado com Sucesso");
-
-                // Vai para a Pagina Principal
-                const nextPage = "index.html";
-                document.location.href = nextPage;   
+                document.location.href = index.html;   
 
             } else {
 

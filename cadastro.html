@@ -34,23 +34,28 @@
 <!---================================================== Barra de navegação =================================================================================--->
 
 <header>
-    <div class="containerX">
-        <div class="navbar">
+    <div class="container-navbar-cadastro">
+        <div class="navbar-cadastro">
             <nav>
-                <div class="botoes">
-                    <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
-                    <a href="index.html#contato" class="btn_nav">Contato</a>
-                    <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="agendamento.html" class="btn_nav">Agendamento</a>
-                    <form id="loginUser" class="pesquisa">
-                        <a href="login.html" class="user_btn">
-                            <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
-                        </a>
-                        <div>
+                <div class="botoes-cad">
+
+                    <div><a href="index.html" class="logo-cad"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
+                    <a href="index.html#contato" class="btn_nav-cad">Contato</a>
+                    <a href="index.html#sobrenos" class="btn_nav-cad">Sobre nós</a>
+                    <a href="agendamento.html" class="btn_nav-cad">Agendamento</a>
+
+                    <form class="pesquisa-cad">
+
+                        <div class="user-mix-cad" id="loginUser">
+                            <a href="login.html" class="user_btn-cad">
+                                <span class="material-symbols-outlined"> account_circle</span>
+                            </a>
+                            <p class=name-user-cad id="nameUser"> <strong> Login </strong> </p>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                            <a href="#" class=search_btn-cad><span class="material-symbols-outlined"> search </span> </a>
                         </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                     </form>
+
                 </div>
             </nav>
         </div>
@@ -60,74 +65,67 @@
 <!---================================================== Body =================================================================================--->
 
 
-<body>
+<body class="body-cadastro">
 
-    <div class="background">
+    <div class="container-cadastro">
 
-        <div class="container-cadastro">
+        <form id="cadlog-btn">
 
-            <form id="cadlog-btn">
+            <div id="teste">
 
-                <div id="teste">
+                <div class="cadastro-title">
+                    <h1>Crie sua conta!</h1>
+                </div>
 
-                    <div class="cadastro-title">
-                        <h1>CRIE SUA CONTA!</h1>
+                <div class="cadastro-infos">
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="name" placeholder="Coloque seu Nome" name="name"
+                            required>
                     </div>
 
-                    <div class="cadastro-infos">
-
-                        <div class="info">
-                            <label for="name"><b>Nome</b></label>
-                            <input class=input-info type="text" id="name" placeholder="Coloque seu Nome" name="name"
-                                required>
-                        </div>
-
-                        <div class="info">
-                            <label for="email"><b>E-mail</b></label>
-                            <input class=input-info type="text" id="email" placeholder="exemplo@gmail.com" name="email"
-                                required>
-                        </div>
-
-                        <div class="info">
-                            <label for="cpf"><b>Senha</b></label>
-                            <input class="input-cadastro" type="password" id="senha" placeholder="Senha" name="senha"
-                                required>
-                        </div>
-
-                        <div class="info">
-                            <label for="cpf"><b>CPF</b></label>
-                            <input class=input-info type="text" id="cpf" placeholder="000.000.000-00" name="cpf"
-                                required>
-                        </div>
-
-                        <div class="info">
-                            <label for="idade"><b>Data de Nascimento</b></label>
-                            <input class=input-info type="text" id="idade" placeholder="__/__/____" name="idade"
-                                required>
-                        </div>
-
-                        <div class="info">
-                            <label for="phone"><b>Telefone</b></label>
-                            <input class=input-info type="text" id="phone" placeholder="00 00000-0000 " name="phone"
-                                required>
-                        </div>
-
-                        <button class="cadlog-btn" type="submit">Criar conta</button>
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="email" placeholder="exemplo@gmail.com" name="email"
+                            required>
                     </div>
 
-                    <div class="login-btn">
-                        <a class="cadlog-btn" href="/loginCliente.html">
-                            <button type="button" class="cancelbtn">Faça Login</button>
-                        </a>
+
+                    <div class="info">
+                        <input class="input-cadastro" type="password" id="senha" placeholder="Senha" name="senha"
+                            required>
                     </div>
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="cpf" placeholder="CPF" name="cpf"
+                            required>
+                    </div>
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="idade" placeholder="Data de nascimento" name="idade"
+                            required>
+                    </div>
+
+                    <div class="info">
+                        <input class=input-cadastro type="text" id="phone" placeholder="Telefone " name="phone"
+                            required>
+                    </div>
+
 
                 </div>
 
-            </form>
+                <div class="logincad-btns">
+                    <a class="cadlog-btn" href="/login.html">
+                        <button type="button" class="btn-login">Login</button>
+                    </a>
+                    <button class="cria-btn" type="submit">Criar conta</button>
+                </div>
 
-        </div>
+            </div>
+
+        </form>
 
     </div>
+
 
 
     <!---================================================== Scripts =================================================================================--->

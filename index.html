@@ -30,36 +30,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Archivo+Black&display=swap" rel="stylesheet">
 
 </head>
-    
+
 <!---================================================== Cabeçario =================================================================================--->
-    
+
 <header>
-    <div class="containerX">
-        <div class="navbar">
+    <div class="container-navbar-index">
+        <div class="navbar-index">
             <nav>
                 <div class="botoes">
+
                     <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
                     <a href="index.html#contato" class="btn_nav">Contato</a>
                     <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
                     <a href="agendamento.html" class="btn_nav">Agendamento</a>
+
                     <form class="pesquisa">
-                        <div id="loginUser">
+
+                        <div class="user-mix" id="loginUser">
                             <a href="login.html" class="user_btn">
-                                <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
+                                <span class="material-symbols-outlined"> account_circle</span>
                             </a>
-                            <div>
-                                <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                            </div>
+                            <p class=name-user id="nameUser"> <strong> Login </strong> </p>
+                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
                             <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                         </div>
                     </form>
+
                 </div>
             </nav>
         </div>
     </div>
 </header>
 
-<!---================================================== Body =================================================================================--->    
+<!---================================================== Body =================================================================================--->
 
 <body onload="verifyLogin()">
 
@@ -81,7 +84,6 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <script src="script.js"></script>
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);
@@ -233,16 +235,16 @@
         </div>
     </div>
 
-    <!---================================================== Scripts =================================================================================--->    
+    <!---================================================== Scripts =================================================================================--->
 
     <script>
 
         // <!---============= Variaveis =============--->
         var username;
 
-        
+
         // <!---============= Verifica se há usuario Logado =============--->
-            
+
         // Verifica se Usuario está logado
         function verifyLogin() {
 
@@ -250,27 +252,12 @@
 
             if (username != null) {
 
-                const changeHTML = `<a href="status.html" class="user_btn"><span
-                            class="material-symbols-outlined">account_circle</span><p id="nameUser">Nome Usuario</p></a>
-                        <div>
-                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                        </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
 
-                document.getElementById("loginUser").innerHTML = changeHTML;
-                document.getElementById("nameUser").innerHTML = username;
 
             } else {
 
-                const changeHTML = `<a href="login.html" class="user_btn"><span
-                            class="material-symbols-outlined">account_circle</span>Login</a>
-                        <div>
-                            <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                        </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
 
-                document.getElementById("loginUser").innerHTML = changeHTML;
-                
+
             }
         }
 

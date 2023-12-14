@@ -1,3 +1,121 @@
+
+/* -------------------------------------------- Navbar cadastro -------------------------------------------- */
+
+
+.container-navbar-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+
+}
+
+.navbar-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(41, 131, 204, 0.637);
+
+}
+
+.logo-login{
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.logo-login:hover{
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
+.botoes-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  font-family: 'Abel', sans-serif;
+  font-size: 20px;
+}
+
+.btn_nav-login{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  text-decoration: none;
+  color: white;
+}
+
+.btn_nav-login:hover{
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+
+.pesquisa-login{
+  display: flex;
+  justify-content: center;
+  font-family: 'Abel', sans-serif;
+}
+
+.user-mix-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.name-user-login{
+  color: white;
+  font-family: 'Abel', sans-serif;
+  font-size: 20px;
+  margin-top: 17px;
+}
+
+input[type=search],
+textarea{
+  background-color: rgb(241, 241, 241);
+  width: 160px;
+  height: 28px;
+  padding: 0 5px 0 10px;
+  outline: 2px rgb(70, 67, 67);
+  border-radius: 20px;
+}
+
+.user_btn-login{
+  text-decoration: none;
+  color: rgb(240, 240, 240);
+  margin-top: 10px;
+  border-radius: 20px;
+  
+}
+
+.search_btn-login{
+  text-decoration: none;
+  color: rgb(240, 240, 240);
+  margin-top: 3px;
+  border-radius: 20px;
+  
+}
+
+.user_btn-login:hover{
+  transition: 0.2s;
+  transform: scale(1.18);
+  
+}
+
+.search_btn-login:hover{
+  transition: 0.2s;
+  transform: scale(1.18);
+  
+}
+
+/* CORPO LOGIN */
+
 .body-login{
   background-image: url("/img/background.webp");
 }

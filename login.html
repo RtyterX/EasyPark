@@ -34,23 +34,28 @@
 <!---================================================== Barra de navegação =================================================================================--->
     
 <header>
-    <div class="containerX">
-        <div class="navbar">
+    <div class="container-navbar-login">
+        <div class="navbar-login">
             <nav>
                 <div class="botoes">
-                    <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
-                    <a href="index.html#contato" class="btn_nav">Contato</a>
-                    <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="agendamento.html" class="btn_nav">Agendamento</a>
-                    <form id="loginUser" class="pesquisa">
-                        <a href="login.html" class="user_btn">
-                            <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
-                        </a>
-                        <div>
+
+                    <div><a href="index.html" class="logo-login"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
+                    <a href="index.html#contato" class="btn_nav-login">Contato</a>
+                    <a href="index.html#sobrenos" class="btn_nav-login">Sobre nós</a>
+                    <a href="agendamento.html" class="btn_nav-login">Agendamento</a>
+
+                    <form class="pesquisa">
+
+                        <div class="user-mix-login" id="loginUser">
+                            <a href="login.html" class="user_btn-login">
+                                <span class="material-symbols-outlined"> account_circle</span>
+                            </a>
+                            <p class=name-user-login id="nameUser"> <strong> Login </strong> </p>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                            <a href="#" class=search_btn-login><span class="material-symbols-outlined"> search </span> </a>
                         </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                     </form>
+
                 </div>
             </nav>
         </div>
