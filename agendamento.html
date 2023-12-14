@@ -71,22 +71,23 @@
 
     <div class="container-login">
 
-                <p class="login-title">Vaga Agendada</p>
+        <div class="cadastro-title">
+            <h1>Vaga Agendada </h1>
+        </div>
 
-                <div class="login-inputs">
-                    <input class="inputbar" type="text" id="cliente" placeholder="Cliente" name="cliente" required>
-                    <input class="inputbar" type="text" id="endereco" placeholder="Endereço do Local" name="endereco" required>
-                    <input class="inputbar" type="text" id="vaga" placeholder="Vaga" name="vaga" required>
-                    <input class="inputbar" type="text" id="dia" placeholder="00/00/0000 00:00" name="dia" required>
-                </div>
+        <div class="login-inputs">
+            <input class="inputbar" type="text" id="cliente" placeholder="Cliente" name="cliente" required>
+            <input class="inputbar" type="text" id="endereco" placeholder="Endereço do Local" name="endereco" required>
+            <input class="inputbar" type="text" id="vaga" placeholder="Vaga" name="vaga" required>
+            <input class="inputbar" type="text" id="dia" placeholder="00/00/0000 00:00" name="dia" required>
+        </div>
 
-                <div class="logincad-btns">
-                    <div class="login-btn">
-                        <button class="true-loginbtn" onclick="deletaAgendamento()">Deletar Agendamento</button>
-                    </div>
-                </div>
+        <div class="logincad-btns">
+            <div class="login-btn">
+                <button class="true-loginbtn" onclick="deletaAgendamento()">Deletar Agendamento</button>
             </div>
-    
+        </div>
+    </div>
 
     <div class="container-cadastro">
 
@@ -101,13 +102,13 @@
                 <div class="cadastro-infos">
 
                     <div class="info">
-                        <input class=input-cadastro type="text" id="criaCliente" placeholder="Nome do Cliente" name="criaCliente"
-                            required>
+                        <input class=input-cadastro type="text" id="criaCliente" placeholder="Nome do Cliente"
+                            name="criaCliente" required>
                     </div>
 
                     <div class="info">
-                        <input class=input-cadastro type="text" id="criaEndereco" placeholder="Endereço do Local" name="criaEndereco"
-                            required>
+                        <input class=input-cadastro type="text" id="criaEndereco" placeholder="Endereço do Local"
+                            name="criaEndereco" required>
                     </div>
 
                     <div class="info">
@@ -116,10 +117,9 @@
                     </div>
 
                     <div class="info">
-                        <input class=input-cadastro type="text" id="criaDia" placeholder="00/00/0000 00:00" name="criaDia"
-                            required>
+                        <input class=input-cadastro type="text" id="criaDia" placeholder="00/00/0000 00:00"
+                            name="criaDia" required>
                     </div>
-
 
                 </div>
 
@@ -153,7 +153,7 @@
 
         // JavaScript
         var username;
-        var idclienteDB =  localStorage.clienteId;
+        var idclienteDB = localStorage.clienteId;
 
         // Converte as Variaveis
         var clienteDB;
@@ -186,7 +186,7 @@
                 endereco: endereco,
                 vagas: vagas,
                 date: date
-                
+
             };
 
             // Envia o JSON para a URL correta
@@ -214,7 +214,7 @@
 
         }
 
- // <!---============= Carrega o Agendamento =============--->
+        // <!---============= Carrega o Agendamento =============--->
 
         // Busca dados no Backend - Metodo "GET" e preenche os campos 
         async function carregaAgendamento() {
@@ -271,7 +271,7 @@
 
                 const tiraForm = `<h1> Delete o Formulário para realizar outro Agendamento </h1>`;
                 document.getElementById("cadlog-btn").innerHTML = tiraForm;
-        
+
             }
         }
 
@@ -284,30 +284,29 @@
             var result = confirm("Quer mesmo deletar seu Agendamento?");
             if (result) {
 
-            //  Envia o Método Delete para o Banco
-            const response = await fetch("http://localhost:8080/agendamento/delete/1", {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+                //  Envia o Método Delete para o Banco
+                const response = await fetch("http://localhost:8080/agendamento/delete/1", {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
 
-            localStorage.clear();
+                // Se der certo...
+                if (response.ok) {
 
-            // Se der certo...
-            if (response.ok) {
+                    alert("Cadastro Deletado com Sucesso");
+                    const reloadPage = `index.html`;
+                    document.location.href = reloadPage;
 
-                alert("Cadastro Deletado com Sucesso");
-                document.location.href = index.html;
+                } else {
 
-            } else {
-
-                alert("Erro ao deletar Cadastro");
+                    alert("Erro ao deletar Cadastro");
+                }
             }
         }
-        }
 
-        
+
         // <!---============= Verifica Login =============--->
 
         // Verifica se Usuario está logado

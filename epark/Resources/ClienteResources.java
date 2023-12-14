@@ -1,7 +1,6 @@
 package com.example.epark.Resources;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +35,7 @@ public class ClienteResources {
 	}
 	
 	
+	
 	@CrossOrigin
 	@PostMapping(value = "/insert")
 	public ResponseEntity<String> insertCliente(@RequestBody Cliente cliente) {
@@ -44,22 +44,15 @@ public class ClienteResources {
 		
 	}
 	
-	@CrossOrigin
-	@GetMapping(value = "/list/all")
+	@GetMapping(value = "/lista")
 	public ResponseEntity<List<Cliente>> getTodosCliente(){
 		return ResponseEntity.ok(clienteServices.getTodosCliente());
 		
 	}
 	
-	@CrossOrigin
-	@GetMapping(value = "/list/{email}")
-	public ResponseEntity<Optional<Cliente>> getCliente(@PathVariable String email){
-		return ResponseEntity.ok(clienteServices.getCliente(email));
-		
-	}
 	
 	
-	@CrossOrigin
+	
 	@DeleteMapping(value = "delete/{id}")
 	public ResponseEntity<Void> deletar(@PathVariable Long id) {
 		clienteServices.deleteCliente(id);

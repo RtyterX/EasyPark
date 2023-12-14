@@ -34,23 +34,30 @@
 <!---================================================== Barra de navegação =================================================================================--->
 
 <header>
-    <div class="containerX">
-        <div class="navbar">
+    <div class="container-navbar-status">
+        <div class="navbar-status">
             <nav>
                 <div class="botoes">
-                    <div><a href="index.html" class="logo"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a></div>
-                    <a href="index.html#contato" class="btn_nav">Contato</a>
-                    <a href="index.html#sobrenos" class="btn_nav">Sobre nós</a>
-                    <a href="agendamento.html" class="btn_nav">Agendamento</a>
-                    <form id="loginUser" class="pesquisa">
-                        <a href="login.html" class="user_btn">
-                            <p id="nameUser"></p><span class="material-symbols-outlined">account_circle</span>
-                        </a>
-                        <div>
+
+                    <div><a href="index.html" class="logo-status"><img src="/img/logo_ep.png" alt="Logo EasyPark"></a>
+                    </div>
+                    <a href="index.html#contato" class="btn_nav-status">Contato</a>
+                    <a href="index.html#sobrenos" class="btn_nav-status">Sobre nós</a>
+                    <a href="agendamento.html" class="btn_nav-status">Agendamento</a>
+
+                    <form class="pesquisa">
+
+                        <div class="user-mix-status" id="loginUser">
+                            <a href="login.html" class="user_btn-status">
+                                <span class="material-symbols-outlined"> account_circle</span>
+                            </a>
+                            <p class=name-user-status id="nameUser"> <strong> Login </strong> </p>
                             <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                            <a href="#" class=search_btn-status><span class="material-symbols-outlined"> search </span>
+                            </a>
                         </div>
-                        <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>
                     </form>
+
                 </div>
             </nav>
         </div>
@@ -64,14 +71,8 @@
     <div class="container-status">
         <div class="container-infos" id="personalInfo">
 
-            <div class="info">
-                <label for="name"><b>Nome</b></label>
-                <input class=input-info type="text" id="name" placeholder="Coloque seu Nome" name="name" required>
-            </div>
-            <div class="info">
-                <label for="email"><b>E-mail</b></label>
-                <input class=input-info type="text" id="email" placeholder="exemplo@gmail.com" name="email" required>
-            </div>
+            <p class="login-title">Seus Dados</p>
+
 
             <div class="info">
                 <label for="cpf"><b>CPF</b></label>
@@ -79,20 +80,35 @@
             </div>
 
             <div class="info">
-                <label for="idade"><b>Idade</b></label>
-                <input class=input-info type="text" id="idade" placeholder="__/__/____" name="idade" required>
+                <label for="name"><b>Nome</b></label>
+                <input class=input-info type="text" id="name" placeholder="Coloque seu Nome" name="name" required>
             </div>
+
 
             <div class="info">
                 <label for="phone"><b>Telefone</b></label>
                 <input class=input-info type="text" id="phone" placeholder="00 00000-0000 " name="phone" required>
             </div>
 
-            <div class="infos-btn">
-                <button class=trueinfos-btn classonclick="salvaCadastro()">Salvar</button>
-                <button class=trueinfos-btn classonclick="editaCadastro()">Editar</button>
-                <button class=trueinfos-btn onclick="deletaCadastro()">Deletar Conta</button>
+            <div class="info">
+                <label for="email"><b>E-mail</b></label>
+                <input class=input-info type="text" id="email" placeholder="exemplo@gmail.com" name="email" required>
             </div>
+
+            <div class="info">
+                <label for="idade"><b>Data de Nascimento</b></label>
+                <input class=input-info type="text" id="idade" placeholder="__/__/____" name="idade" required>
+            </div>
+
+
+            <button class=trueinfos-btn onclick="logoff()">Logoff</button>
+
+            <div class="infos-btn">
+                <button class=trueinfos-btn onclick="salvaCadastro()">Salvar</button>
+                <button class=trueinfos-btn onclick="editaCadastro()">Editar</button>
+                <button class="delconta" onclick="deletaCadastro()">Deletar Conta</button>
+            </div>
+
         </div>
     </div>
 
@@ -178,7 +194,7 @@
         async function editaCasdastro() {
 
             var nameDB;
-            var emailDB
+            var emailDB;
 
             // Envia o GET Request
             const response = await fetch("http://localhost:8080/cliente/patch/${login}", {
@@ -230,15 +246,30 @@
 
         }
 
+
+        // <!---============= Deleta Cadastro =============--->
+
+        function logoff() {
+
+            localStorage.clear();
+
+            const reloadPage = `index.html`;
+            document.location.href = reloadPage;
+
+        }
+
+
         // <!---============= Deleta Cadastro =============--->
 
         async function deletaCadastro() {
 
             var idDelete;
-            var result = confirm("Deseja mesmo deletar sua conta?");
+
+            var result = confirm("Tem certeza que deja deletar?");
             if (result) {
+
                 getID();
-                deleteUser(idDelete);
+
             }
         }
 
@@ -262,19 +293,20 @@
                     // Testar sem a linha baixo
                     let testeData = data;
 
-                    // Console Logs
-                    console.log(testeData.idade);
-
                     // Converte as Variaveis
                     idDelete = testeData.id;
 
+                    console.log(idDelete);
+
                 });
+
+            deleteUser(idDelete);
         }
 
-        async function deleteUser(idDelete) {
+        async function deleteUser(id) {
 
             //  Envia o Método Delete para o Banco
-            const response = await fetch("http://localhost:8080/cliente/delete/" + idDelete, {
+            const response = await fetch("http://localhost:8080/cliente/delete/" + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -287,7 +319,10 @@
             if (response.ok) {
 
                 alert("Cadastro Deletado com Sucesso");
-                document.location.href = index.html;
+
+                // Vai para a Pagina Principal
+                const nextPage = "index.html";
+                document.location.href = nextPage;
 
             } else {
 
@@ -302,15 +337,16 @@
 
             username = localStorage.username;
 
+            console.log(username);
+
             if (username != null) {
 
                 const changeHTML = `<a href="status.html" class="user_btn">
-                    <span class="material-symbols-outlined"> account_circle</span>
-                </a>
-                <p class=name-user id="nameUser"> <strong> Login </strong> </p>
-                <input type="search" id="pesquisa" placeholder="Pesquisar...">
-                <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
-
+          <span class="material-symbols-outlined"> account_circle</span>
+          </a>
+          <p class=name-user id="nameUser"> <strong> Login </strong> </p>
+          <input type="search" id="pesquisa" placeholder="Pesquisar...">
+          <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
 
                 document.getElementById("loginUser").innerHTML = changeHTML;
                 document.getElementById("nameUser").innerHTML = username;

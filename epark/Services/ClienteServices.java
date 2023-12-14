@@ -1,7 +1,6 @@
 package com.example.epark.Services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,10 +30,6 @@ public class ClienteServices {
 	
 	public List<Cliente> getTodosCliente(){
 		return clienteRepository.findAll();
-	}
-	
-	public Optional<Cliente> getCliente(String email){
-		return clienteRepository.findByEmail(email);
 	}
 	
 	public Cliente update(long id, Cliente cliente) {

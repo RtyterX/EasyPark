@@ -1,65 +1,192 @@
-.body-status{
-    background-image: url("/img/background.webp");
+.container-navbar-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+
+}
+
+.navbar-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(41, 131, 204, 0.637);
+
+}
+
+.logo-status {
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.logo-login:hover {
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
+.botoes-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  font-family: 'Abel', sans-serif;
+  font-size: 20px;
+}
+
+.btn_nav-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+}
+
+.btn_nav-status:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+
+.pesquisa-status {
+  display: flex;
+  justify-content: center;
+  font-family: 'Abel', sans-serif;
+}
+
+.user-mix-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.name-user-status {
+  color: white;
+  font-family: 'Abel', sans-serif;
+  font-size: 20px;
+}
+
+input[type=search],
+textarea {
+  background-color: rgb(241, 241, 241);
+  width: 160px;
+  height: 28px;
+  padding: 0 5px 0 10px;
+  outline: 2px rgb(70, 67, 67);
+  border-radius: 20px;
+}
+
+.user_btn-login {
+  text-decoration: none;
+  color: rgb(240, 240, 240);
+  margin-top: 10px;
+  border-radius: 20px;
+
+}
+
+.delconta {
+  border: 0.5px solid grey;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 30px 5px 30px;
+  background-color: rgb(245, 71, 71);
+
+}
+
+.search_btn-login {
+  text-decoration: none;
+  color: rgb(240, 240, 240);
+  margin-top: 3px;
+  border-radius: 20px;
+
+}
+
+.user_btn-login:hover {
+  transition: 0.2s;
+  transform: scale(1.18);
+
+}
+
+.search_btn-login:hover {
+  transition: 0.2s;
+  transform: scale(1.18);
+
+}
+
+
+.body-status {
+  background-image: url("/img/background.webp");
 }
 
 .container-status {
-    margin: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+  margin: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .container-infos {
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    border-radius: 25px;
-    background-color: rgb(245, 245, 245);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 25px;
+  background-color: rgb(245, 245, 245);
 }
 
 .info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    gap: 15px;
-    padding: 10px;
-    font-family: 'Abel Bold', sans-serif;
-    color: rgb(36, 36, 36);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 15px;
+  padding: 10px;
+  font-family: 'Abel Bold', sans-serif;
+  color: rgb(36, 36, 36);
 }
 
 .infos-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-family: 'Abel', sans-serif;
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-family: 'Abel', sans-serif;
+  color: white;
 
 
 }
 
 .input-info {
-    width: 350px;
-    height: 50px;
-    padding: 0 5px 0 10px;
-    border-radius: 5px;
-    border: 1px solid #dddfe2;
+  width: 350px;
+  height: 50px;
+  padding: 0 5px 0 10px;
+  border-radius: 5px;
+  border: 1px solid #dddfe2;
 }
 
 .trueinfos-btn {
-    border: 0.5px solid grey;
-    border-radius: 10px;
-    background-color: white;
-    padding: 5px 30px 5px 30px;
+  border: 0.5px solid grey;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 30px 5px 30px;
 }
 
-.trueinfos-btn:hover{
-    transition: 0.2s;
-    cursor:pointer;
-    background-color: rgb(238, 238, 238);
-    transform: scale(1.10); 
-  }
+.trueinfos-btn:hover {
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: rgb(238, 238, 238);
+  transform: scale(1.10);
+}
+
+.delconta:hover{
+  transition: 0.2s;
+  cursor: pointer;
+  transform: scale(1.10);
+}

@@ -177,9 +177,18 @@
 
                 });
 
+            if (response.ok) {
+
+            } else {
+
+                alert("Cadastro não encontrado");
+
+            };
+
             // Formulario de Login
             const login = document.getElementById("login").value;
             const password = document.getElementById("password").value;
+
 
             // Verifica se as Variaveis do Login estão corretas
             if (password == senhaDB) {
@@ -199,7 +208,7 @@
 
             } else {
 
-                alert("Erro ao Cadastrar");
+                alert("Senha incorreta");
 
             }
         }

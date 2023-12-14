@@ -214,7 +214,7 @@
     </div>
 
     <!---============= Rodapé =============--->
-    <div class="direitos-container">
+    <div id="contato" class="direitos-container">
         <div class="logofull-img">
             <img src="/img/logo_ep_full.png" alt="">
 
@@ -243,19 +243,26 @@
         var username;
 
 
-        // <!---============= Verifica se há usuario Logado =============--->
+        // <!---============= Verifica Login =============--->
 
         // Verifica se Usuario está logado
         function verifyLogin() {
 
             username = localStorage.username;
 
+            console.log(username);
+
             if (username != null) {
 
+                const changeHTML = `<a href="status.html" class="user_btn">
+                      <span class="material-symbols-outlined"> account_circle</span>
+                      </a>
+                      <p class=name-user id="nameUser"> <strong> Login </strong> </p>
+                      <input type="search" id="pesquisa" placeholder="Pesquisar...">
+                      <a href="#" class=search_btn><span class="material-symbols-outlined"> search </span> </a>`;
 
-
-            } else {
-
+                document.getElementById("loginUser").innerHTML = changeHTML;
+                document.getElementById("nameUser").innerHTML = username;
 
 
             }
